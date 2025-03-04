@@ -1,0 +1,145 @@
+{
+  "siteTitle": "Gender Sensitivity Quiz",
+  "welcome": "Welcome to the Gender Sensitivity Quiz",
+  "intro": "This quiz will help you assess how gender sensitive you are through scenarios based in rural India.",
+  "startQuiz": "Start Quiz",
+  "enterName": "Enter your name (for certificate)",
+  "namePlaceholder": "Your Name",
+  "languageSelect": "Select Language",
+  "question": "Question",
+  "of": "of",
+  "next": "Next",
+  "previous": "Previous",
+  "submit": "Submit",
+  "yourScore": "Your Score",
+  "totalVisits": "Total Visits",
+  "shareTitle": "Share Your Certificate",
+  "downloadCertificate": "Download Certificate",
+  "emailCertificate": "Email Certificate",
+  "emailPlaceholder": "Your Email (optional)",
+  "send": "Send",
+  "genderChampion": "Gender Champion",
+  "genderSensitive": "Gender Sensitive",
+  "genderAware": "Gender Aware",
+  "disclaimer": "The language translations may not be completely correct as it is an AI generated quiz. I-Saksham Education and Learning Foundation is making an effort to promote a gender equal society",
+  "tryAgain": "Try Again",
+  "congratulations": "Congratulations",
+  "certificateFrom": "Certificate from I-Saksham Education and Learning Foundation",
+  "thisIsToCertifyThat": "This is to certify that",
+  "hasCompletedTheGenderSensitivityQuiz": "has completed the Gender Sensitivity Quiz",
+  "withAScoreOf": "with a score of",
+  "youAre": "You are a",
+  
+  "questions": [
+    {
+      "text": "In a village panchayat meeting, a female sarpanch is discussing water conservation plans. Some male members are interrupting her repeatedly. What would be the most appropriate response?",
+      "options": [
+        "The female sarpanch should speak louder to be heard over the interruptions",
+        "The meeting moderator should ensure equal speaking time for all members regardless of gender",
+        "The female sarpanch should wait until the men have finished speaking before continuing",
+        "Other women in the meeting should also start interrupting to balance the situation"
+      ],
+      "correctAnswers": [1],
+      "explanation": "Ensuring equal speaking time and respect for all members regardless of gender is the most gender-sensitive approach."
+    },
+    {
+      "text": "A rural school is organizing a sports day. How should the activities be structured to be most gender-sensitive?",
+      "options": [
+        "Separate all sports activities by gender to respect traditional roles",
+        "Allow students to participate in any sport they choose regardless of gender",
+        "Have some gender-specific and some mixed activities to balance tradition and equality",
+        "Focus on sports that are traditionally acceptable for both genders"
+      ],
+      "correctAnswers": [1],
+      "explanation": "Allowing all students to participate in any sport they choose regardless of gender is the most inclusive and gender-sensitive approach."
+    },
+    {
+      "text": "In a rural household, the daughter wants to pursue higher education in a city, but the family is hesitant. What would be the most gender-sensitive approach?",
+      "options": [
+        "The family should prioritize her marriage instead of education as it's more secure",
+        "The family should allow her to study but only in fields suitable for women",
+        "The family should support her educational aspirations while addressing safety concerns constructively",
+        "The family should suggest she pursue education through distance learning while staying at home"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Supporting her educational aspirations while addressing safety concerns constructively respects her agency while acknowledging practical considerations."
+    },
+    {
+      "text": "A village is implementing a new agricultural training program. What would be the most gender-sensitive approach?",
+      "options": [
+        "Focus training on men as they are the primary farmers in most households",
+        "Create separate training programs for men and women with different content",
+        "Ensure the training is accessible to all genders with the same content and opportunities",
+        "Focus training on women to help them catch up with men's agricultural knowledge"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Ensuring equal access and content for all genders recognizes that agricultural knowledge is valuable for everyone."
+    },
+    {
+      "text": "A man in a rural community wants to take paternity leave after his child is born. How should this be viewed?",
+      "options": [
+        "It's unnecessary as childcare is primarily a woman's responsibility",
+        "It's admirable but impractical in a rural setting where men need to work",
+        "It should be supported as fathers have an important role in early childcare",
+        "He should take leave only if there are no female relatives available to help"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Supporting paternity leave recognizes the importance of fathers in childcare and challenges traditional gender roles."
+    },
+    {
+      "text": "In a village self-help group meeting, financial decisions need to be made. What would be the most gender-sensitive approach?",
+      "options": [
+        "Men should make the final decisions as they typically have more financial experience",
+        "Women should make all decisions to counterbalance historical inequalities",
+        "Decisions should be made collectively with equal input valued regardless of gender",
+        "Financial decisions should be split by type - men handle investments, women handle savings"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Collective decision-making with equal input valued regardless of gender is the most inclusive approach."
+    },
+    {
+      "text": "A teenage girl in a rural community wants to learn to ride a motorcycle. What would be the most gender-sensitive response from her family?",
+      "options": [
+        "Discourage her as motorcycles are not appropriate for girls",
+        "Allow her to learn but only ride in the village, not on highways",
+        "Support her interest and ensure she receives proper training and safety equipment",
+        "Suggest she learn to ride a scooter instead as it's more appropriate for girls"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Supporting her interest while ensuring proper training and safety is respectful of her agency without imposing gender-based limitations."
+    },
+    {
+      "text": "During a village health camp, how should reproductive health education be conducted?",
+      "options": [
+        "Separate sessions for men and women with gender-specific content only",
+        "Focus primarily on women as they bear more reproductive responsibility",
+        "Comprehensive education for all genders with both shared and separate sessions as appropriate",
+        "Basic information for all but detailed information only for married individuals"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Comprehensive education for all genders with appropriate shared and separate sessions recognizes that reproductive health is everyone's concern."
+    },
+    {
+      "text": "A widow in a rural community wants to start a small business. What would be the most gender-sensitive approach from the community?",
+      "options": [
+        "Discourage her as business is difficult for women, especially widows",
+        "Suggest she focus on traditional women's work like handicrafts only",
+        "Provide the same support and resources that would be offered to any community member",
+        "Give her special advantages because of her vulnerable position"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Providing equal support without discrimination or special treatment respects her dignity and capability."
+    },
+    {
+      "text": "In a rural household, who should be responsible for teaching children about gender equality?",
+      "options": [
+        "Mothers should teach daughters, and fathers should teach sons",
+        "Schools should handle this education, not parents",
+        "Both parents should model and teach gender equality to all their children",
+        "Community elders as they have the most wisdom about social roles"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Both parents modeling and teaching gender equality to all children creates a consistent message and demonstrates equality in practice."
+    }
+  ]
+}
