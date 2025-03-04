@@ -226,7 +226,7 @@ const Result: React.FC = () => {
     <div className="max-w-4xl mx-auto">
       {/* Result summary */}
       <div className="bg-white rounded-lg shadow-lg p-4 mb-4">
-        <p className="text-xl font-bold text-center mb-6 bg-yellow-100 text-yellow-800 p-2">
+        <p className="text-xl font-bold text-center mb-5 bg-yellow-100 text-yellow-800 p-2">
         {t('congratulations')}, {userName}!  {t('youAre')} <span className="font-bold">{category}</span>,
         {t('yourScore')}: {percentage.toFixed(1)}%
        
