@@ -62,36 +62,36 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-[#FDF1E5] min-h-screen overflow-auto">
-       <div className="flex items-center justify-center min-h-screen ">
-          {!selectedLanguage ? (
-            // Language selection UI
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[600px]">
-              <img src={logo} alt="Logo" className="mx-auto mb-2" />
-              <h2 className="text-[#EF7F1A] text-xl font-semibold">Gender Sensitivity Quiz</h2>
-              <div className="text-[#EF7F1A] text-2xl mt-2">🌐</div>
-              <p className="text-gray-600 mt-2">Please select your preferred language:</p>
+      <div className="flex items-center justify-center min-h-screen ">
+        {!selectedLanguage ? (
+          // Language selection UI
+          <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[600px]">
+            <img src={logo} alt="Logo" className="mx-auto mb-2" />
+            <h2 className="text-[#EF7F1A] text-xl font-semibold">Gender Sensitivity Quiz</h2>
+            <div className="text-[#EF7F1A] text-2xl mt-2">🌐</div>
+            <p className="text-gray-600 mt-2">Please select your preferred language:</p>
 
-              <div className="grid grid-cols-2 gap-2 mt-4">
-                {allLanguages.map((language) => (
-                  <button
-                    key={language.code}
-                    onClick={() => changeLanguage(language.code)}
-                    className="bg-[#D06C15] text-white py-2 px-4 rounded-md hover:bg-[#B75A10] transition duration-300"
-                  >
-                    {language.name}
-                  </button>
-                ))}
-              </div>
-
-              <p className="text-xs text-gray-500 mt-4 px-4">
-                Disclaimer: The language translations may not be completely correct as this is an AI-generated quiz.
-                I-Saksham Education and Learning Foundation is making an effort to promote a gender-equal society.
-              </p>
+            <div className="grid grid-cols-2 gap-2 mt-4">
+              {allLanguages.map((language) => (
+                <button
+                  key={language.code}
+                  onClick={() => changeLanguage(language.code)}
+                  className="bg-[#D06C15] text-white py-2 px-4 rounded-md hover:bg-[#B75A10] transition duration-300"
+                >
+                  {language.name}
+                </button>
+              ))}
             </div>
-          ) : (
-              <>
+
+            <p className="text-xs text-gray-500 mt-4 px-4">
+              Disclaimer: The language translations may not be completely correct as this is an AI-generated quiz.
+              I-Saksham Education and Learning Foundation is making an effort to promote a gender-equal society.
+            </p>
+          </div>
+        ) : (        
             // Quiz introduction UI
-            {!showPopup && (<div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 mt-6">
+
+            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 mt-6">
               <div className="flex justify-center mb-6">
                 <img src={logo} alt="Logo" />
               </div>
@@ -129,12 +129,12 @@ const Home: React.FC = () => {
                   <p>{t("totalVisits")}: {visitCount}</p>
                 </div>
               )}
-            (showPopup{
             </div>
-          )}
-       </div>
+      
+        )}
+      </div>
     </div>
   );
 };
 
-export default Home;
+        export default Home;
