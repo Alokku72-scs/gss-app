@@ -76,7 +76,7 @@ const Home: React.FC = () => {
     }
   };
 
-  const handleSelectedLanguage = () => {
+    const handleSelectedLanguage = () => {
     setSelectedLanguage(null);
     setShowPopup(false);
   }
