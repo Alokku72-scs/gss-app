@@ -1,91 +1,11 @@
-// import React, { useState, useEffect, useRef } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useTranslation } from 'react-i18next';
-// import html2canvas from 'html2canvas';
-// import jsPDF from 'jspdf';
-// import { Award, Download, Mail, RefreshCw, Share2 } from 'lucide-react';
-//
-// const Result: React.FC = () => {
-//   const { t } = useTranslation();
-//   const navigate = useNavigate();
-//   const certificateRef = useRef<HTMLDivElement>(null);
-//
-//   const [userName, setUserName] = useState('');
-//   const [score, setScore] = useState(0);
-//   const [percentage, setPercentage] = useState(0);
-//   const [category, setCategory] = useState({ title: '', message: '' }); // Initialize as an object
-//   const [email, setEmail] = useState('');
-//   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
-//   const [isSendingEmail, setIsSendingEmail] = useState(false);
-//
-//   useEffect(() => {
-//     const storedName = localStorage.getItem('userName');
-//     const storedScore = localStorage.getItem('quizScore');
-//     const storedPercentage = localStorage.getItem('quizPercentage');
-//
-//     if (!storedName || !storedScore || !storedPercentage) {
-//       navigate('/');
-//       return;
-//     }
-//
-//     setUserName(storedName);
-//     setScore(parseInt(storedScore, 10));
-//
-//     const percentValue = parseFloat(storedPercentage);
-//     setPercentage(percentValue);
-//
-//     // Set category as an object with title and message
-//     if (percentValue >= 80) {
-//       setCategory({
-//         title: t('genderChampion'),
-//         message: "Congratulations! You are highly sensitive to gender equality and can bring positive change in society."
-//       });
-//     } else if (percentValue >= 60) {
-//       setCategory({
-//         title: t('genderSensitive'),
-//         message: "You are sensitive to gender equality, but there is still room to learn and develop."
-//       });
-//     } else {
-//       setCategory({
-//         title: t('genderAware'),
-//         message: t('You are aware of gender issues, but need to deepen your understanding further')
-//       });
-//     }
-//   }, [navigate, t]);
-//
-//   return (
-//     <div className="max-w-4xl mx-auto">
-//       <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-//         <h1 className="text-3xl font-bold text-center mb-6">
-//           {t('yourScore')}: {percentage.toFixed(1)}%
-//         </h1>
-//
-//         <div className={`text-center p-6 rounded-lg mb-6 ${
-//           percentage >= 80
-//             ? 'bg-green-100 text-green-800'
-//             : percentage >= 60
-//               ? 'bg-blue-100 text-blue-800'
-//               : 'bg-yellow-100 text-yellow-800'
-//         }`}>
-//           <h2 className="text-2xl font-bold mb-2">{t('congratulations')}, {userName}!</h2>
-//           <p className="text-xl font-bold">{category.title}</p>  {/* Fix: Render category.title */}
-//           <p className="text-lg mt-2">{category.message}</p>     {/* Fix: Render category.message */}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-//
-// export default Result;
-
-
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import { Award, Download, Mail, RefreshCw, Share2 } from 'lucide-react';
-import logo from '../assets/logo.png';
+import { Award, Download, Mail, RefreshCw } from 'lucide-react';
+import { generateCertificateImages } from '../utils/certificateUtils';
+import ShareButton from './ShareButton';
+import logo from "../assets/logo.png";
+import emailjs from "@emailjs/browser";
 
 const Result: React.FC = () => {
   const { t } = useTranslation();
@@ -104,6 +24,8 @@ const Result: React.FC = () => {
     const storedName = localStorage.getItem('userName');
     const storedScore = localStorage.getItem('quizScore');
     const storedPercentage = localStorage.getItem('quizPercentage');
+    console.log("storedScore",storedScore);
+    console.log("Score",score);
 
     if (!storedName || !storedScore || !storedPercentage) {
       navigate('/');
@@ -116,7 +38,6 @@ const Result: React.FC = () => {
     const percentValue = parseFloat(storedPercentage);
     setPercentage(percentValue);
 
-    // Determine category based on percentage
     if (percentValue >= 80) {
       setCategory(t('genderChampion'));
     } else if (percentValue >= 60) {
@@ -124,125 +45,276 @@ const Result: React.FC = () => {
     } else {
       setCategory(t('genderAware'));
     }
-//     if (percentValue >= 80) {
-//       setCategory({
-//         title: t('genderChampion'),
-//         message: "Congratulations! You are highly sensitive to gender equality and can bring positive change in society."
-//       });
-//     } else if (percentValue >= 60) {
-//       setCategory({
-//         title: t('genderSensitive'),
-//         message: "You are sensitive to gender equality, but there is still room to learn and develop."
-//       });
-//     } else {
-//       setCategory({
-//         title: t('genderAware'),
-//         message: "You are aware of gender issues, but need to deepen your understanding further."
-//       });
   }, [navigate, t]);
 
   const handleTryAgain = () => {
     navigate('/');
   };
 
-  const handleDownloadCertificate = async () => {
-    if (!certificateRef.current) return;
+  const handleGenerateCertificate = async () => {
+    if (!certificateRef.current) return null;
 
+    try {
+      const certificate = await generateCertificateImages(certificateRef.current, {
+        title: 'My Gender Sensitivity Certificate',
+        text: `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`,
+        hashtags: ['GenderSensitivity', 'ISaksham']
+      });
+
+      return certificate;
+    } catch (error) {
+      console.error('Error generating certificate:', error);
+      return null;
+    }
+  };
+
+  const handleDownloadCertificate = async () => {
     setIsGeneratingPDF(true);
 
     try {
-      const canvas = await html2canvas(certificateRef.current, {
-        scale: 2,
-        logging: false,
-        useCORS: true
-      });
-
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: 'a4'
-      });
-
-      const imgWidth = 297;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-      pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-      pdf.save(`${userName}_gender_sensitivity_certificate.pdf`);
+      const certificate = await handleGenerateCertificate();
+      if (certificate) {
+        const link = document.createElement('a');
+        link.href = certificate.pdfUrl;
+        link.download = `${userName}_gender_sensitivity_certificate.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        certificate.cleanup();
+      }
     } catch (error) {
-      console.error('Error generating PDF:', error);
+      console.error('Error downloading certificate:', error);
     } finally {
       setIsGeneratingPDF(false);
     }
   };
 
-  const handleShareCertificate = async () => {
-    if (!certificateRef.current) return;
 
+  // const handleSendEmail = async () => {
+  //   if (!email) return;
+  
+  //   setIsSendingEmail(true);
+  
+  //   try {
+  //     const certificate = await handleGenerateCertificate();
+  //     if (!certificate) throw new Error("Failed to generate certificate");
+  
+  //     // Fetch the PDF as Blob and convert to Base64
+  //     const response = await fetch(certificate.pdfUrl);
+  //     const blob = await response.blob();
+  //     const reader = new FileReader();
+      
+  //     reader.readAsDataURL(blob);
+  //     reader.onloadend = async () => {
+  //       const base64Data = reader.result?.toString().split(',')[1]; // Get only Base64 content
+        
+  //       // Send Email with Base64 PDF
+  //       const params = {
+  //         to_email: email,
+  //         from_name: userName,
+  //         subject: "Your Certificate",
+  //         message: "Please find your certificate attached.",
+  //         attachment: base64Data, // Base64 encoded PDF
+  //         filename: `${userName}_certificate.pdf`, // File name
+  //       };
+  
+  //       emailjs.send("service_foq71a3", "template_z2comz3", params,"Phy0lS6_2c9SSS-2T" )
+  //         .then(response => {
+  //           console.log("Email sent successfully!", response);
+  //           alert("Certificate sent successfully!");
+  //           setEmail('');
+  //         })
+  //         .catch(error => {
+  //           console.error("Failed to send email:", error);
+  //           alert("Failed to send the certificate.");
+  //         })
+  //         .finally(() => setIsSendingEmail(false));
+  //     };
+  //   } catch (error) {
+  //     console.error("Error sending email:", error);
+  //     setIsSendingEmail(false);
+  //   }
+  // };
+  
+  // const handleSendEmail = async (recipientEmail: string) => {
+
+  //   if (!recipientEmail) {
+  //     alert("Please enter a valid email address.");
+  //     return;
+  //   }
+  
+  //   setIsSendingEmail(true);
+  
+  //   try {
+  //     // 1️⃣ Generate the certificate
+  //     const certificate = await handleGenerateCertificate();
+  //     if (!certificate) throw new Error("Certificate generation failed.");
+
+  //      // Convert PDF Blob to Base64
+  //      const base64PDF = await convertBlobToBase64(certificate.pdfBlob);
+
+  //     // 2️⃣ Set EmailJS Template Params
+  //     const templateParams = {
+  //       name: userName || "User",
+  //       email: recipientEmail,  // Dynamic recipient
+  //       subject: "Your Gender Sensitivity Certificate",
+  //       message: "Congratulations! Your certificate is ready. Download it below.",
+  //      // certificate_url: certificate.pdfUrl,  // Add this to template
+  //      attachment:base64PDF,
+  //     };
+  
+  //     // 3️⃣ Send Email through EmailJS
+  //     const response = await emailjs.send(
+  //       "service_foq71a3",  // Your EmailJS Service ID
+  //       "template_z2comz3", // Your EmailJS Template ID
+  //       templateParams,
+  //       "Phy0lS6_2c9SSS-2T"   // Your EmailJS Public Key
+  //     );
+  
+  //     if (response.status === 200) {
+  //       alert(`Email sent successfully to ${recipientEmail}!`);
+  //     } else {
+  //       alert("Failed to send email. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending email:", error);
+  //     alert("An error occurred. Please try again.");
+  //   } finally {
+  //     setIsSendingEmail(false);
+  //   }
+  // };
+  
+  // // Helper Function: Convert Blob to Base64
+  // const convertBlobToBase64 = (blob: Blob): Promise<string> => {
+  //   return new Promise((resolve, reject) => {
+  //    const reader = new FileReader();
+  //    reader.readAsDataURL(blob);
+  //    reader.onloadend = () => resolve(reader.result as string);
+  //    reader.onerror = (error) => reject(error);
+  //   });
+  // };
+//   const handleSendEmail = async () => {
+//     if (!email) return;
+
+//     setIsSendingEmail(true);
+
+//     const templateParams = {
+//      to_email: email, // This will be passed to EmailJS
+//     };
+
+//   try {
+//     const response = await emailjs.send(
+//       "service_foq71a3",   // Replace with your EmailJS Service ID
+//       "template_z2comz3",  // Replace with your EmailJS Template ID
+//       templateParams,
+//       "Phy0lS6_2c9SSS-2T"    // Replace with your EmailJS Public Key
+//     );
+
+//     if (response.status === 200) {
+//       alert(`Certificate has been sent to ${email}`);
+//       setEmail("");
+//     } else {
+//       alert("Failed to send email.");
+//     }
+//   } catch (error) {
+//     console.error("Error sending email:", error);
+//     alert("An error occurred.");
+//   } finally {
+//     setIsSendingEmail(false);
+//   }
+// };
+
+  // const handleSendEmail = async () => {
+  //   if (!email) return;
+
+  //   setIsSendingEmail(true);
+
+  //   try {
+  //     // In a real application, you would send the email through a backend service
+  //     await new Promise(resolve => setTimeout(resolve, 1500));
+  //     alert(`Certificate would be sent to ${email} in a real application.`);
+  //     setEmail('');
+  //   } catch (error) {
+  //     console.error('Error sending email:', error);
+  //   } finally {
+  //     setIsSendingEmail(false);
+  //   }
+  // };
+
+  const handleSendEmail = async (recipientEmail: string) => {
+    if (!recipientEmail) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+  
+    setIsSendingEmail(true);
+  
     try {
-      const canvas = await html2canvas(certificateRef.current, {
-        scale: 2,
-        logging: false,
-        useCORS: true
-      });
-
-      const imgData = canvas.toDataURL('image/png');
-
-      if (navigator.share) {
-        await navigator.share({
-          title: 'My Gender Sensitivity Certificate',
-          text: `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`,
-          url: imgData
-        });
+      // 1️⃣ Generate the certificate
+      const certificate = await handleGenerateCertificate();
+      if (!certificate) throw new Error("Certificate generation failed.");
+  
+      // 2️⃣ Set EmailJS Template Params
+      const templateParams = {
+        name: userName || "User",
+        email: recipientEmail, // Pass only the email string
+        subject: "Your Gender Sensitivity Certificate",
+        message: "Congratulations! Your certificate is ready. Download it below.",
+        certificate_url: certificate.pdfUrl, // Add this to the template
+      };
+  
+      // 3️⃣ Send Email through EmailJS
+      const response = await emailjs.send(
+        "service_foq71a3",  // Your EmailJS Service ID
+        "template_z2comz3", // Your EmailJS Template ID
+        templateParams,
+        "Phy0lS6_2c9SSS-2T"   // Your EmailJS Public Key
+      );
+  
+      if (response.status === 200) {
+        alert(`Email sent successfully to ${recipientEmail}!`);
       } else {
-        // Fallback for browsers that don't support Web Share API
-        const shareText = `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`;
-        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
+        alert("Failed to send email. Please try again.");
       }
     } catch (error) {
-      console.error('Error sharing certificate:', error);
-    }
-  };
-
-  const handleSendEmail = async () => {
-    if (!email || !certificateRef.current) return;
-
-    setIsSendingEmail(true);
-
-    try {
-      // In a real application, you would send the email through a backend service
-      // This is a simulation for the demo
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      alert(`Certificate would be sent to ${email} in a real application.`);
-      setEmail('');
-    } catch (error) {
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
+      alert("An error occurred. Please try again.");
     } finally {
       setIsSendingEmail(false);
     }
   };
+  
 
   return (
     <div className="max-w-4xl mx-auto">
       {/* Result summary */}
-      <div className="bg-white rounded-lg shadow-lg p-4 mb-4">
-        <p className="text-xl font-bold text-center mb-5 bg-yellow-100 text-yellow-800 p-2">
-        {t('congratulations')}, {userName}!  {t('youAre')} <span className="font-bold">{category}</span>,
-        {t('yourScore')}: {percentage.toFixed(1)}%
-       
-          <div className="flex justify-center">
+      <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h1 className="text-3xl font-bold text-center mb-6">
+          {t('yourScore')}: {percentage.toFixed(1)}%
+        </h1>
+
+        <div className={`text-center p-6 rounded-lg mb-6 ${
+          percentage >= 80
+            ? 'bg-green-100 text-green-800'
+            : percentage >= 60
+              ? 'bg-blue-100 text-blue-800'
+              : 'bg-yellow-100 text-yellow-800'
+        }`}>
+          <h2 className="text-2xl font-bold mb-2">{t('congratulations')}, {userName}!</h2>
+          <p className="text-xl">
+            {t('youAre')} <span className="font-bold">{category}</span>
+          </p>
+        </div>
+
+        <div className="flex justify-center">
           <button
             onClick={handleTryAgain}
-            className="flex items-center mt-2 px-6 py-2 bg-gray-200 text-gray-500 rounded-md hover:bg-gray-300 transition duration-300"
+            className="flex items-center px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition duration-300"
           >
             <RefreshCw size={20} className="mr-2" />
             {t('tryAgain')}
           </button>
         </div>
-        </p>
-        
-
-       
       </div>
 
       {/* Certificate */}
@@ -259,8 +331,7 @@ const Result: React.FC = () => {
         >
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              {/*<Award size={80} className="text-[#EF7F1A]" /> */}
-              <img src={logo} />
+              <img src={logo} alt="logo"/>
             </div>
 
             <h1 className="text-4xl font-bold text-[#EF7F1A] mb-2">{category}</h1>
@@ -284,7 +355,7 @@ const Result: React.FC = () => {
             </div>
 
             <p className="text-lg">
-              i-Saksham: Empowering Young Women Leaders in Bihar
+              I-Saksham Education and Learning Foundation
             </p>
           </div>
         </div>
@@ -293,14 +364,8 @@ const Result: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <h3 className="text-lg font-medium mb-3">{t('shareTitle')}</h3>
-            <div className="flex space-x-2">
-              <button
-                onClick={handleShareCertificate}
-                className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
-              >
-                <Share2 size={20} className="mr-2" />
-                Share
-              </button>
+            <div className="flex flex-wrap gap-2">
+              <ShareButton onShare={handleGenerateCertificate} />
 
               <button
                 onClick={handleDownloadCertificate}
@@ -325,7 +390,7 @@ const Result: React.FC = () => {
               />
 
               <button
-                onClick={handleSendEmail}
+                onClick={() => handleSendEmail(email)}
                 disabled={!email || isSendingEmail}
                 className="flex items-center px-4 py-2 bg-[#EF7F1A] text-white rounded-md hover:bg-[#D06C15] transition duration-300 disabled:bg-[#F8C093]"
               >

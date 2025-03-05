@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../assets/logo.png";
 
+
 const Home: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -10,10 +11,16 @@ const Home: React.FC = () => {
   const [visitCount, setVisitCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+  const [showPopup, setShowPopup] = useState(true)
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    setShowPopup(true); // Show the popup
     setSelectedLanguage(lng); // Show quiz UI
+  };
+
+  const handleClosePopup = () => {
+      setShowPopup(false);
   };
 
   const worldLanguages = [
@@ -46,11 +53,20 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const storedCount = localStorage.getItem("visitCount");
-    const count = storedCount ? parseInt(storedCount, 10) : 0;
-    setVisitCount(count + 1);
-    localStorage.setItem("visitCount", (count + 1).toString());
-    setIsLoading(false);
+    let count = storedCount ? parseInt(storedCount, 10) : 0;
+
+    const sessionUpdated = sessionStorage.getItem("visitUpdated");
+
+    if (!sessionUpdated) {
+      count += 1;  // Increment visit count
+      localStorage.setItem("visitCount", count.toString());
+      sessionStorage.setItem("visitUpdated", "true"); // Mark session update
+    }
+
+    setVisitCount(count); // Update state
   }, []);
+
+
 
   const handleStartQuiz = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,38 +76,62 @@ const Home: React.FC = () => {
     }
   };
 
-  return (
-    <div className="bg-[#FDF1E5] min-h-screen overflow-auto">
-      <div className="flex items-center justify-center min-h-screen ">
-        {!selectedLanguage ? (
-          // Language selection UI
-          <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[600px]">
-            <img src={logo} alt="Logo" className="mx-auto mb-2" />
-            <h2 className="text-[#EF7F1A] text-xl font-semibold">Gender Sensitivity Quiz</h2>
-            <div className="text-[#EF7F1A] text-2xl mt-2">🌐</div>
-            <p className="text-gray-600 mt-2">Please select your preferred language:</p>
 
-            <div className="grid grid-cols-2 gap-2 mt-4">
-              {allLanguages.map((language) => (
-                <button
-                  key={language.code}
-                  onClick={() => changeLanguage(language.code)}
-                  className="bg-[#D06C15] text-white py-2 px-4 rounded-md hover:bg-[#B75A10] transition duration-300"
-                >
-                  {language.name}
-                </button>
-              ))}
+    return (
+        <div className="flex items-center justify-center min-h-screen">
+          {!selectedLanguage ? (
+            // Language selection UI
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[600px]">
+              <img src={logo} alt="Logo" className="mx-auto mb-2" />
+              <h2 className="text-[#EF7F1A] text-xl font-semibold">
+                Gender Sensitivity Quiz
+              </h2>
+              <div className="text-[#EF7F1A] text-2xl mt-2">🌐</div>
+              <p className="text-gray-600 mt-2">Please select your preferred language:</p>
+
+              <div className="grid grid-cols-2 gap-2 mt-4">
+                {allLanguages.map((language) => (
+                  <button
+                    key={language.code}
+                    onClick={() => changeLanguage(language.code)}
+                    className="bg-[#D06C15] text-white py-2 px-4 rounded-md hover:bg-[#B75A10] transition duration-300"
+                  >
+                    {language.name}
+                  </button>
+                ))}
+              </div>
+
+              <p className="text-xs text-gray-500 mt-4 px-4">
+                Disclaimer: The language translations may not be completely correct as this is an AI-generated quiz.
+                I-Saksham Education and Learning Foundation is making an effort to promote a gender-equal society.
+              </p>
             </div>
+          ) : showPopup ? (
+              <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[800px]">
+                  <img src={logo} alt="Logo" className="mx-auto mb-2" />
+                <h1 className="text-2xl font-bold text-orange-600">{t('siteTitle')}</h1>
+                <p className="mt-2 text-gray-600">
+                    {t('genderQuizIntro')}
+                 </p>
+                <p className="mt-2 text-gray-500">
+                  You can select one or more options for each question. You will be given 0 to 4 points based on your answers.
+                </p>
+                <div className="mt-4 bg-orange-100 text-orange-700 px-4 py-2 rounded-lg inline-block">
+                  Total Visitors: {visitCount}
+                </div>
+                <div className="mt-6 p-2 bg-gray-100 text-gray-500 text-sm rounded-md">
+                  Disclaimer: The language translations may not be completely correct as it is an AI-generated quiz. I-Saksham Education and Learning Foundation is making an effort to promote a gender-equal society.
+                </div>
+                <button
+                  onClick={handleClosePopup}
+                  className="mt-8 bg-orange-500 text-white px-6 py-2 rounded-full shadow hover:bg-orange-600"
+                >
+                  Got It! →
+                </button>
+              </div>
 
-            <p className="text-xs text-gray-500 mt-4 px-4">
-              Disclaimer: The language translations may not be completely correct as this is an AI-generated quiz.
-              I-Saksham Education and Learning Foundation is making an effort to promote a gender-equal society.
-            </p>
-          </div>
-        ) : (        
-            // Quiz introduction UI
-
-            <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-6 mt-6">
+          ) : (
+            <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[600px]">
               <div className="flex justify-center mb-6">
                 <img src={logo} alt="Logo" />
               </div>
@@ -99,7 +139,6 @@ const Home: React.FC = () => {
                 {t("welcome")}
               </h1>
               <p className="text-lg text-center mb-8">{t("intro")}</p>
-
               <form onSubmit={handleStartQuiz} className="max-w-md mx-auto">
                 <div className="mb-6">
                   <label htmlFor="name" className="block text-gray-700 mb-2">
@@ -123,18 +162,9 @@ const Home: React.FC = () => {
                   {t("startQuiz")}
                 </button>
               </form>
-
-              {!isLoading && (
-                <div className="mt-8 text-center text-gray-600">
-                  <p>{t("totalVisits")}: {visitCount}</p>
-                </div>
-              )}
             </div>
-      
-        )}
-      </div>
-    </div>
-  );
+          )}
+        </div>
+    );
 };
-
-        export default Home;
+export default Home;

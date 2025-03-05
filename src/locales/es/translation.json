@@ -25,5 +25,116 @@
   "tryAgain": "Intentar de Nuevo",
   "congratulations": "Felicitaciones",
   "certificateFrom": "Certificado de I-Saksham Education and Learning Foundation",
-  "questions": []
+  "questions": [
+    {
+      "text": "En una reunión del panchayat de una aldea, una sarpanch (líder femenina) está discutiendo planes de conservación de agua. Algunos miembros masculinos la interrumpen repetidamente. ¿Cuál sería la respuesta más apropiada?",
+      "options": [
+        "La sarpanch femenina debería hablar más fuerte para ser escuchada sobre las interrupciones",
+        "El moderador de la reunión debería asegurar un tiempo de palabra igual para todos los miembros, independientemente del género",
+        "La sarpanch femenina debería esperar a que los hombres terminen de hablar antes de continuar",
+        "Otras mujeres en la reunión también deberían empezar a interrumpir para equilibrar la situación"
+      ],
+      "correctAnswers": [1],
+      "explanation": "Asegurar un tiempo de palabra igual y respeto para todos los miembros, independientemente del género, es el enfoque más sensible al género."
+    },
+    {
+      "text": "Una escuela rural está organizando un día deportivo. ¿Cómo deberían estructurarse las actividades para ser más sensibles al género?",
+      "options": [
+        "Separar todas las actividades deportivas por género para respetar los roles tradicionales",
+        "Permitir que los estudiantes participen en cualquier deporte que elijan, independientemente del género",
+        "Tener algunas actividades específicas de género y algunas actividades mixtas para equilibrar la tradición y la igualdad",
+        "Centrarse en deportes que son tradicionalmente aceptables para ambos géneros"
+      ],
+      "correctAnswers": [1],
+      "explanation": "Permitir que todos los estudiantes participen en cualquier deporte que elijan, independientemente del género, es el enfoque más inclusivo y sensible al género."
+    },
+    {
+      "text": "En un hogar rural, la hija quiere seguir la educación superior en una ciudad, pero la familia duda. ¿Cuál sería el enfoque más sensible al género?",
+      "options": [
+        "La familia debería priorizar su matrimonio en lugar de la educación, ya que es más seguro",
+        "La familia debería permitirle estudiar, pero solo en campos adecuados para mujeres",
+        "La familia debería apoyar sus aspiraciones educativas mientras aborda las preocupaciones de seguridad de manera constructiva",
+        "La familia debería sugerir que siga la educación a través del aprendizaje a distancia mientras se queda en casa"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Apoyar sus aspiraciones educativas mientras aborda las preocupaciones de seguridad de manera constructiva respeta su agencia mientras reconoce las consideraciones prácticas."
+    },
+    {
+      "text": "Una aldea está implementando un nuevo programa de capacitación agrícola. ¿Cuál sería el enfoque más sensible al género?",
+      "options": [
+        "Centrar la capacitación en los hombres, ya que son los agricultores principales en la mayoría de los hogares",
+        "Crear programas de capacitación separados para hombres y mujeres con contenido diferente",
+        "Asegurar que la capacitación sea accesible para todos los géneros con el mismo contenido y oportunidades",
+        "Centrar la capacitación en las mujeres para ayudarlas a ponerse al día con el conocimiento agrícola de los hombres"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Asegurar la igualdad de acceso y contenido para todos los géneros reconoce que el conocimiento agrícola es valioso para todos."
+    },
+    {
+      "text": "Un hombre en una comunidad rural quiere tomar la licencia de paternidad después de que nazca su hijo. ¿Cómo debería verse esto?",
+      "options": [
+        "Es innecesario, ya que el cuidado de los niños es principalmente responsabilidad de la mujer",
+        "Es admirable pero poco práctico en un entorno rural donde los hombres necesitan trabajar",
+        "Debería ser apoyado, ya que los padres tienen un papel importante en el cuidado infantil temprano",
+        "Debería tomar licencia solo si no hay parientes femeninas disponibles para ayudar"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Apoyar la licencia de paternidad reconoce la importancia de los padres en el cuidado infantil y desafía los roles de género tradicionales."
+    },
+    {
+      "text": "En una reunión de un grupo de autoayuda de la aldea, se deben tomar decisiones financieras. ¿Cuál sería el enfoque más sensible al género?",
+      "options": [
+        "Los hombres deberían tomar las decisiones finales, ya que generalmente tienen más experiencia financiera",
+        "Las mujeres deberían tomar todas las decisiones para contrarrestar las desigualdades históricas",
+        "Las decisiones deberían tomarse colectivamente con igual valor en las aportaciones, independientemente del género",
+        "Las decisiones financieras deberían dividirse por tipo: los hombres manejan las inversiones, las mujeres manejan los ahorros"
+      ],
+      "correctAnswers": [2],
+      "explanation": "La toma de decisiones colectiva con igual valor en las aportaciones, independientemente del género, es el enfoque más inclusivo."
+    },
+    {
+      "text": "Una adolescente en una comunidad rural quiere aprender a andar en motocicleta. ¿Cuál sería la respuesta más sensible al género de su familia?",
+      "options": [
+        "Desanimarla, ya que las motocicletas no son apropiadas para las niñas",
+        "Permitirle aprender, pero solo andar en la aldea, no en las carreteras",
+        "Apoyar su interés y asegurar que reciba la capacitación adecuada y equipo de seguridad",
+        "Sugerirle que aprenda a andar en scooter, ya que es más apropiado para las niñas"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Apoyar su interés mientras se asegura la capacitación adecuada y la seguridad es respetuoso de su agencia sin imponer limitaciones basadas en el género."
+    },
+    {
+      "text": "Durante un campamento de salud de la aldea, ¿cómo se debe llevar a cabo la educación sobre salud reproductiva?",
+      "options": [
+        "Sesiones separadas para hombres y mujeres con contenido específico de género solamente",
+        "Centrarse principalmente en las mujeres, ya que tienen más responsabilidad reproductiva",
+        "Educación integral para todos los géneros con sesiones compartidas y separadas según sea apropiado",
+        "Información básica para todos, pero información detallada solo para personas casadas"
+      ],
+      "correctAnswers": [2],
+      "explanation": "La educación integral para todos los géneros con sesiones compartidas y separadas apropiadas reconoce que la salud reproductiva es una preocupación de todos."
+    },
+    {
+      "text": "Una viuda en una comunidad rural quiere comenzar un pequeño negocio. ¿Cuál sería el enfoque más sensible al género de la comunidad?",
+      "options": [
+        "Desanimarla, ya que los negocios son difíciles para las mujeres, especialmente las viudas",
+        "Sugerirle que se centre en el trabajo tradicional de las mujeres, como la artesanía",
+        "Proporcionar el mismo apoyo y recursos que se ofrecerían a cualquier miembro de la comunidad",
+        "Darle ventajas especiales debido a su posición vulnerable"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Proporcionar apoyo igualitario sin discriminación ni trato especial respeta su dignidad y capacidad."
+    },
+    {
+      "text": "En un hogar rural, ¿quién debería ser responsable de enseñar a los niños sobre la igualdad de género?",
+      "options": [
+        "Las madres deberían enseñar a las hijas y los padres deberían enseñar a los hijos",
+        "Las escuelas deberían manejar esta educación, no los padres",
+        "Ambos padres deberían modelar y enseñar la igualdad de género a todos sus hijos",
+        "Los ancianos de la comunidad, ya que tienen la mayor sabiduría sobre los roles sociales"
+      ],
+      "correctAnswers": [2],
+      "explanation": "Ambos padres modelando y enseñando la igualdad de género a todos los niños crea un mensaje consistente y demuestra la igualdad en la práctica."
+    }
+  ]
 }
