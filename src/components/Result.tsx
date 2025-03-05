@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Award, Download, Mail, RefreshCw } from 'lucide-react';
+import { Download, Mail, RefreshCw } from 'lucide-react';
 import { generateCertificateImages } from '../utils/certificateUtils';
 import ShareButton from './ShareButton';
 import logo from "../assets/logo.png";

@@ -26,115 +26,115 @@
   "congratulations": "অভিনন্দন",
   "certificateFrom": "I-Saksham Education and Learning Foundation থেকে সার্টিফিকেট",
   "questions": [
-    {
-      "text": "In a village panchayat meeting, a female sarpanch is discussing water conservation plans. Some male members are interrupting her repeatedly. What would be the most appropriate response?",
-      "options": [
-        "The female sarpanch should speak louder to be heard over the interruptions",
-        "The meeting moderator should ensure equal speaking time for all members regardless of gender",
-        "The female sarpanch should wait until the men have finished speaking before continuing",
-        "Other women in the meeting should also start interrupting to balance the situation"
-      ],
-      "correctAnswers": [1],
-      "explanation": "Ensuring equal speaking time and respect for all members regardless of gender is the most gender-sensitive approach."
-    },
-    {
-      "text": "A rural school is organizing a sports day. How should the activities be structured to be most gender-sensitive?",
-      "options": [
-        "Separate all sports activities by gender to respect traditional roles",
-        "Allow students to participate in any sport they choose regardless of gender",
-        "Have some gender-specific and some mixed activities to balance tradition and equality",
-        "Focus on sports that are traditionally acceptable for both genders"
-      ],
-      "correctAnswers": [1],
-      "explanation": "Allowing all students to participate in any sport they choose regardless of gender is the most inclusive and gender-sensitive approach."
-    },
-    {
-      "text": "In a rural household, the daughter wants to pursue higher education in a city, but the family is hesitant. What would be the most gender-sensitive approach?",
-      "options": [
-        "The family should prioritize her marriage instead of education as it's more secure",
-        "The family should allow her to study but only in fields suitable for women",
-        "The family should support her educational aspirations while addressing safety concerns constructively",
-        "The family should suggest she pursue education through distance learning while staying at home"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Supporting her educational aspirations while addressing safety concerns constructively respects her agency while acknowledging practical considerations."
-    },
-    {
-      "text": "A village is implementing a new agricultural training program. What would be the most gender-sensitive approach?",
-      "options": [
-        "Focus training on men as they are the primary farmers in most households",
-        "Create separate training programs for men and women with different content",
-        "Ensure the training is accessible to all genders with the same content and opportunities",
-        "Focus training on women to help them catch up with men's agricultural knowledge"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Ensuring equal access and content for all genders recognizes that agricultural knowledge is valuable for everyone."
-    },
-    {
-      "text": "A man in a rural community wants to take paternity leave after his child is born. How should this be viewed?",
-      "options": [
-        "It's unnecessary as childcare is primarily a woman's responsibility",
-        "It's admirable but impractical in a rural setting where men need to work",
-        "It should be supported as fathers have an important role in early childcare",
-        "He should take leave only if there are no female relatives available to help"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Supporting paternity leave recognizes the importance of fathers in childcare and challenges traditional gender roles."
-    },
-    {
-      "text": "In a village self-help group meeting, financial decisions need to be made. What would be the most gender-sensitive approach?",
-      "options": [
-        "Men should make the final decisions as they typically have more financial experience",
-        "Women should make all decisions to counterbalance historical inequalities",
-        "Decisions should be made collectively with equal input valued regardless of gender",
-        "Financial decisions should be split by type - men handle investments, women handle savings"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Collective decision-making with equal input valued regardless of gender is the most inclusive approach."
-    },
-    {
-      "text": "A teenage girl in a rural community wants to learn to ride a motorcycle. What would be the most gender-sensitive response from her family?",
-      "options": [
-        "Discourage her as motorcycles are not appropriate for girls",
-        "Allow her to learn but only ride in the village, not on highways",
-        "Support her interest and ensure she receives proper training and safety equipment",
-        "Suggest she learn to ride a scooter instead as it's more appropriate for girls"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Supporting her interest while ensuring proper training and safety is respectful of her agency without imposing gender-based limitations."
-    },
-    {
-      "text": "During a village health camp, how should reproductive health education be conducted?",
-      "options": [
-        "Separate sessions for men and women with gender-specific content only",
-        "Focus primarily on women as they bear more reproductive responsibility",
-        "Comprehensive education for all genders with both shared and separate sessions as appropriate",
-        "Basic information for all but detailed information only for married individuals"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Comprehensive education for all genders with appropriate shared and separate sessions recognizes that reproductive health is everyone's concern."
-    },
-    {
-      "text": "A widow in a rural community wants to start a small business. What would be the most gender-sensitive approach from the community?",
-      "options": [
-        "Discourage her as business is difficult for women, especially widows",
-        "Suggest she focus on traditional women's work like handicrafts only",
-        "Provide the same support and resources that would be offered to any community member",
-        "Give her special advantages because of her vulnerable position"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Providing equal support without discrimination or special treatment respects her dignity and capability."
-    },
-    {
-      "text": "In a rural household, who should be responsible for teaching children about gender equality?",
-      "options": [
-        "Mothers should teach daughters, and fathers should teach sons",
-        "Schools should handle this education, not parents",
-        "Both parents should model and teach gender equality to all their children",
-        "Community elders as they have the most wisdom about social roles"
-      ],
-      "correctAnswers": [2],
-      "explanation": "Both parents modeling and teaching gender equality to all children creates a consistent message and demonstrates equality in practice."
-    }
+      {
+        "text": "একটি গ্রাম পঞ্চায়েত সভায়, একজন মহিলা সরপঞ্চ জল সংরক্ষণ পরিকল্পনা নিয়ে আলোচনা করছেন। কিছু পুরুষ সদস্য তাকে বারবার বাধা দিচ্ছেন। সবচেয়ে উপযুক্ত প্রতিক্রিয়া কী হবে?",
+        "options": [
+          "মহিলা সরপঞ্চকে বাধা এড়িয়ে শোনার জন্য জোরে কথা বলা উচিত।",
+          "সভা পরিচালনাকারীর লিঙ্গ নির্বিশেষে সকল সদস্যের জন্য সমান কথা বলার সময় নিশ্চিত করা উচিত।",
+          "পুরুষদের কথা শেষ না হওয়া পর্যন্ত মহিলা সরপঞ্চের অপেক্ষা করা উচিত এবং তারপরে চালিয়ে যাওয়া উচিত।",
+          "সভার অন্যান্য মহিলাদেরও পরিস্থিতি ভারসাম্য বজায় রাখার জন্য বাধা দেওয়া শুরু করা উচিত।"
+        ],
+        "correctAnswers": [1],
+        "explanation": "লিঙ্গ নির্বিশেষে সকল সদস্যের জন্য সমান কথা বলার সময় এবং সম্মান নিশ্চিত করা সবচেয়ে লিঙ্গ-সংবেদনশীল পদ্ধতি।"
+      },
+      {
+        "text": "একটি গ্রামীণ বিদ্যালয় ক্রীড়া দিবসের আয়োজন করছে। সবচেয়ে লিঙ্গ-সংবেদনশীল হওয়ার জন্য কার্যক্রমগুলি কীভাবে গঠন করা উচিত?",
+        "options": [
+          "ঐতিহ্যগত ভূমিকা সম্মান করার জন্য লিঙ্গ দ্বারা সমস্ত ক্রীড়া কার্যক্রম পৃথক করুন।",
+          "লিঙ্গ নির্বিশেষে শিক্ষার্থীদের তাদের পছন্দের যেকোনো খেলায় অংশগ্রহণের অনুমতি দিন।",
+          "ঐতিহ্য এবং সমতা ভারসাম্য বজায় রাখার জন্য কিছু লিঙ্গ-নির্দিষ্ট এবং কিছু মিশ্র কার্যক্রম রাখুন।",
+          "যে খেলাগুলি ঐতিহ্যগতভাবে উভয় লিঙ্গের জন্য গ্রহণযোগ্য সেগুলিতে ফোকাস করুন।"
+        ],
+        "correctAnswers": [1],
+        "explanation": "লিঙ্গ নির্বিশেষে সকল শিক্ষার্থীকে তাদের পছন্দের যেকোনো খেলায় অংশগ্রহণের অনুমতি দেওয়া সবচেয়ে অন্তর্ভুক্তিমূলক এবং লিঙ্গ-সংবেদনশীল পদ্ধতি।"
+      },
+      {
+        "text": "একটি গ্রামীণ পরিবারে, কন্যা শহরে উচ্চশিক্ষা গ্রহণ করতে চায়, কিন্তু পরিবার দ্বিধাগ্রস্ত। সবচেয়ে লিঙ্গ-সংবেদনশীল পদ্ধতি কী হবে?",
+        "options": [
+          "পরিবারের উচিত শিক্ষার পরিবর্তে তার বিবাহকে অগ্রাধিকার দেওয়া, কারণ এটি আরও সুরক্ষিত।",
+          "পরিবারের উচিত তাকে পড়াশোনা করার অনুমতি দেওয়া, তবে শুধুমাত্র মহিলাদের জন্য উপযুক্ত ক্ষেত্রে।",
+          "পরিবারের উচিত তার শিক্ষা আকাঙ্ক্ষাকে সমর্থন করা, একই সাথে গঠনমূলকভাবে নিরাপত্তা উদ্বেগগুলি সমাধান করা।",
+          "পরিবারের উচিত তাকে বাড়িতে থেকে দূরশিক্ষার মাধ্যমে শিক্ষা গ্রহণের পরামর্শ দেওয়া।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "গঠনমূলকভাবে নিরাপত্তা উদ্বেগগুলি সমাধান করার সময় তার শিক্ষা আকাঙ্ক্ষাকে সমর্থন করা ব্যবহারিক বিবেচনা স্বীকার করে তার সংস্থাকে সম্মান করে।"
+      },
+      {
+        "text": "একটি গ্রাম একটি নতুন কৃষি প্রশিক্ষণ কর্মসূচি বাস্তবায়ন করছে। সবচেয়ে লিঙ্গ-সংবেদনশীল পদ্ধতি কী হবে?",
+        "options": [
+          "বেশিরভাগ পরিবারে পুরুষরা প্রাথমিক কৃষক হওয়ায় পুরুষদের প্রশিক্ষণে ফোকাস করুন।",
+          "বিভিন্ন বিষয়বস্তু সহ পুরুষ এবং মহিলাদের জন্য পৃথক প্রশিক্ষণ কর্মসূচি তৈরি করুন।",
+          "প্রশিক্ষণটি একই বিষয়বস্তু এবং সুযোগ সহ সকল লিঙ্গের জন্য সহজলভ্য কিনা তা নিশ্চিত করুন।",
+          "পুরুষদের কৃষি জ্ঞানের সাথে তাল মিলিয়ে চলতে মহিলাদের প্রশিক্ষণে ফোকাস করুন।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "সকল লিঙ্গের জন্য সমান প্রবেশাধিকার এবং বিষয়বস্তু নিশ্চিত করা স্বীকৃতি দেয় যে কৃষি জ্ঞান প্রত্যেকের জন্য মূল্যবান।"
+      },
+      {
+        "text": "একটি গ্রামীণ সম্প্রদায়ের একজন পুরুষ তার সন্তানের জন্মের পর পিতৃত্বকালীন ছুটি নিতে চান। এটি কীভাবে দেখা উচিত?",
+        "options": [
+          "এটি অপ্রয়োজনীয়, কারণ শিশু যত্ন প্রাথমিকভাবে একজন মহিলার দায়িত্ব।",
+          "এটি প্রশংসনীয় কিন্তু গ্রামীণ পরিবেশে অবাস্তব যেখানে পুরুষদের কাজ করা প্রয়োজন।",
+          "এটি সমর্থন করা উচিত, কারণ প্রাথমিক শিশু যত্নে পিতাদের একটি গুরুত্বপূর্ণ ভূমিকা রয়েছে।",
+          "সাহায্য করার জন্য কোনো মহিলা আত্মীয় না থাকলে তার ছুটি নেওয়া উচিত।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "পিতৃত্বকালীন ছুটি সমর্থন করা শিশু যত্নে পিতাদের গুরুত্বকে স্বীকৃতি দেয় এবং ঐতিহ্যগত লিঙ্গ ভূমিকাকে চ্যালেঞ্জ করে।"
+      },
+      {
+        "text": "একটি গ্রাম স্বনির্ভর গোষ্ঠী সভায়, আর্থিক সিদ্ধান্ত নিতে হবে। সবচেয়ে লিঙ্গ-সংবেদনশীল পদ্ধতি কী হবে?",
+        "options": [
+          "পুরুষদের চূড়ান্ত সিদ্ধান্ত নেওয়া উচিত, কারণ তাদের সাধারণত বেশি আর্থিক অভিজ্ঞতা থাকে।",
+          "ঐতিহাসিক বৈষম্য মোকাবিলা করার জন্য মহিলাদের সমস্ত সিদ্ধান্ত নেওয়া উচিত।",
+          "লিঙ্গ নির্বিশেষে সমান ইনপুট মূল্যায়নের সাথে সম্মিলিতভাবে সিদ্ধান্ত নেওয়া উচিত।",
+          "আর্থিক সিদ্ধান্তগুলি প্রকার অনুসারে বিভক্ত করা উচিত - পুরুষরা বিনিয়োগ পরিচালনা করে, মহিলারা সঞ্চয় পরিচালনা করে।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "লিঙ্গ নির্বিশেষে সমান ইনপুট মূল্যায়নের সাথে সম্মিলিত সিদ্ধান্ত গ্রহণ সবচেয়ে অন্তর্ভুক্তিমূলক পদ্ধতি।"
+      },
+      {
+        "text": "একটি গ্রামীণ সম্প্রদায়ের একজন কিশোরী মেয়ে মোটরসাইকেল চালানো শিখতে চায়। তার পরিবারের কাছ থেকে সবচেয়ে লিঙ্গ-সংবেদনশীল প্রতিক্রিয়া কী হবে?",
+        "options": [
+          "তাকে নিরুৎসাহিত করুন, কারণ মোটরসাইকেল মেয়েদের জন্য উপযুক্ত নয়।",
+          "তাকে শিখতে দিন, তবে শুধুমাত্র গ্রামে চালান, মহাসড়কে নয়।",
+          "তার আগ্রহকে সমর্থন করুন এবং নিশ্চিত করুন যে তিনি সঠিক প্রশিক্ষণ এবং নিরাপত্তা সরঞ্জাম পান।",
+          "তাকে স্কুটার চালানো শিখতে পরামর্শ দিন, কারণ এটি মেয়েদের জন্য বেশি উপযুক্ত।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "সঠিক প্রশিক্ষণ এবং নিরাপত্তা নিশ্চিত করার সময় তার আগ্রহকে সমর্থন করা লিঙ্গ-ভিত্তিক সীমাবদ্ধতা আরোপ না করে তার সংস্থাকে সম্মান করে।"
+      },
+      {
+        "text": "একটি গ্রাম স্বাস্থ্য শিবিরে, প্রজনন স্বাস্থ্য শিক্ষা কীভাবে পরিচালনা করা উচিত?",
+        "options": [
+          "শুধুমাত্র লিঙ্গ-নির্দিষ্ট বিষয়বস্তু সহ পুরুষ এবং মহিলাদের জন্য পৃথক অধিবেশন।",
+          "প্রাথমিকভাবে মহিলাদের উপর ফোকাস করুন, কারণ তারা বেশি প্রজনন দায়িত্ব বহন করে।",
+          "উপযুক্ত ভাগ করা এবং পৃথক অধিবেশন সহ সকল লিঙ্গের জন্য ব্যাপক শিক্ষা।",
+          "সকলের জন্য প্রাথমিক তথ্য, তবে শুধুমাত্র বিবাহিত ব্যক্তিদের জন্য বিস্তারিত তথ্য।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "উপযুক্ত ভাগ করা এবং পৃথক অধিবেশন সহ সকল লিঙ্গের জন্য ব্যাপক শিক্ষা স্বীকৃতি দেয় যে প্রজনন স্বাস্থ্য প্রত্যেকের উদ্বেগ।"
+      },
+      {
+        "text": "একটি গ্রামীণ সম্প্রদায়ের একজন বিধবা একটি ছোট ব্যবসা শুরু করতে চান। সম্প্রদায় থেকে সবচেয়ে লিঙ্গ-সংবেদনশীল পদ্ধতি কী হবে?",
+        "options": [
+          "তাকে নিরুৎসাহিত করুন, কারণ ব্যবসা মহিলাদের জন্য, বিশেষ করে বিধবাদের জন্য কঠিন।",
+          "তাকে শুধুমাত্র হস্তশিল্পের মতো ঐতিহ্যবাহী মহিলাদের কাজে ফোকাস করতে পরামর্শ দিন।",
+          "যেকোনো সম্প্রদায়ের সদস্যকে দেওয়া একই সমর্থন এবং সংস্থান সরবরাহ করুন।",
+          "তার দুর্বল অবস্থানের কারণে তাকে বিশেষ সুবিধা দিন।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "বৈষম্য বা বিশেষ আচরণ ছাড়াই সমান সমর্থন প্রদান করা তার মর্যাদা এবং সক্ষমতাকে সম্মান করে।"
+      },
+      {
+        "text": "একটি গ্রামীণ পরিবারে, শিশুদের লিঙ্গ সমতা সম্পর্কে শেখানোর দায়িত্ব কার হওয়া উচিত?",
+        "options": [
+          "মায়েদের মেয়েদের শেখানো উচিত এবং বাবারা ছেলেদের শেখানো উচিত।",
+          "বিদ্যালয়গুলির এই শিক্ষা পরিচালনা করা উচিত, অভিভাবকদের নয়।",
+          "উভয় অভিভাবকের উচিত তাদের সকল সন্তানের জন্য লিঙ্গ সমতা মডেল করা এবং শেখানো।",
+          "সামাজিক ভূমিকা সম্পর্কে সবচেয়ে বেশি জ্ঞান থাকায় সম্প্রদায়ের প্রবীণরা।"
+        ],
+        "correctAnswers": [2],
+        "explanation": "উভয় অভিভাবকের সকল সন্তানের জন্য লিঙ্গ সমতা মডেল করা এবং শেখানো একটি সামঞ্জস্যপূর্ণ বার্তা তৈরি করে এবং অনুশীলনে সমতা প্রদর্শন করে।"
+      }
   ]
 }
