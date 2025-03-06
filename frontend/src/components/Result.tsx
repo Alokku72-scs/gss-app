@@ -389,14 +389,14 @@ const Result: React.FC = () => {
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EF7F1A]"
               />
 
-              <button
+              {/* <button
                 onClick={() => handleSendEmail(email)}
                 disabled={!email || isSendingEmail}
                 className="flex items-center px-4 py-2 bg-[#EF7F1A] text-white rounded-md hover:bg-[#D06C15] transition duration-300 disabled:bg-[#F8C093]"
               >
                 <Mail size={20} className="mr-2" />
                 {isSendingEmail ? 'Sending...' : t('send')}
-              </button>
+              </button> */}
             </div>
           </div>
         </div>

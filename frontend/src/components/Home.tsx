@@ -119,6 +119,14 @@ const Home: React.FC = () => {
         </div>
       ) : showPopup ? (
         <div className="bg-white p-8 rounded-lg shadow-lg text-center w-[800px]">
+          <div className="flex items-center">
+            <button
+              className="ml-0"
+              onClick={handleSelectedLanguage}
+            >
+              <ArrowLeft size={25} className="rounded"/>
+            </button>
+          </div>
           <img src={logo} alt="Logo" className="mx-auto mb-2" />
           <h1 className="text-2xl font-bold text-orange-600">{t('siteTitle')}</h1>
           <p className="mt-2 text-gray-600">
