@@ -19,19 +19,30 @@ const Result: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [isSendingEmail, setIsSendingEmail] = useState(false);
-
+  let message1="";
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
     const storedScore = localStorage.getItem('quizScore');
     const storedPercentage = localStorage.getItem('quizPercentage');
     console.log("storedScore",storedScore);
-    console.log("Score",score);
+    // console.log("Score",score);
 
     if (!storedName || !storedScore || !storedPercentage) {
       navigate('/');
       return;
     }
+    const numericPercentage = parseInt(storedPercentage, 10);
 
+    if (numericPercentage > 90) {
+      message1 = "Voice and Choice Leader? You represent an amazing community";
+    } else if (numericPercentage > 70 && numericPercentage <= 90) {
+      message1 = "Voice and Choice Champion. You are on the right track";
+    } else if (score > 50 && score <= 70) {
+      message1 = "Voice and Choice Aware. Let's do better";
+    } else {
+      message1 = "Your community needs a mindset shift";
+    }
+    console.log("message1",message1);
     setUserName(storedName);
     setScore(parseInt(storedScore, 10));
 
@@ -357,6 +368,7 @@ const Result: React.FC = () => {
             <p className="text-lg font-semibold tracking-wide ">
              i-Saksham education and learning foundation: {t('voice')}
             </p>
+            <p className='text-3xl font-bold mb-4 text-[#EF7F1A]'>{message1}</p>
           </div>
         </div>
 
@@ -382,6 +394,7 @@ const Result: React.FC = () => {
             <h3 className="text-lg font-medium mb-3">{t('emailCertificate')}</h3>
             <div className="flex space-x-2">
               <input
+                disabled
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
