@@ -347,7 +347,7 @@ const Result: React.FC = () => {
             </div>
 
             <h1 className="text-4xl font-bold text-[#EF7F1A] mb-6">{category}</h1>
-            <p className='text-3xl font-bold mb-4 text-[#EF7F1A]'>
+            <p className='text-2xl font-bold mb-4 text-[#EF7F1A]'>
               {message1 ? message1 : "Default text"}
             </p>
 
