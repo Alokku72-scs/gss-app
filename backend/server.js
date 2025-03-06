@@ -3,8 +3,6 @@ const express = require('express');
 const cors = require('cors'); 
 const connection = require('./config/db'); // Import the database connection
 
-
-const userRoutes = require('./routes/userRoutes');
 const quizRoutes = require('./routes/quizRoutes'); // Import quiz routes
 
 const app = express();
