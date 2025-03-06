@@ -289,9 +289,9 @@ const Result: React.FC = () => {
     <div className="max-w-4xl mx-auto">
       {/* Result summary */}
       <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <h1 className="text-3xl font-bold text-center mb-6">
+        <p className="text-3xl font-bold text-center mb-6">
           {t('yourScore')}: {percentage.toFixed(1)}%
-        </h1>
+        </p>
 
         <div className={`text-center p-6 rounded-lg mb-6 ${
           percentage >= 80
@@ -323,18 +323,18 @@ const Result: React.FC = () => {
 
         <div
           ref={certificateRef}
-          className="border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-6"
+          className="w-[800px] h-[565px] border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-4"
           style={{
             backgroundImage: 'linear-gradient(45deg, rgba(239, 127, 26, 0.05) 25%, transparent 25%, transparent 50%, rgba(239, 127, 26, 0.05) 50%, rgba(239, 127, 26, 0.05) 75%, transparent 75%, transparent)',
             backgroundSize: '40px 40px'
           }}
-        >
+           >
           <div className="text-center">
             <div className="flex justify-center mb-4">
-              <img src={logo} alt="logo"/>
+              <img src={logo} alt="logo" className=" object-contain" />
             </div>
 
-            <h1 className="text-4xl font-bold text-[#EF7F1A] mb-2">{category}</h1>
+            <h1 className="text-4xl font-bold text-[#EF7F1A] mb-6">{category}</h1>
             <h2 className="text-2xl font-semibold mb-6">{t('certificateFrom')}</h2>
 
             <p className="text-xl mb-4">
@@ -345,17 +345,17 @@ const Result: React.FC = () => {
               {userName}
             </p>
 
-            <p className="text-xl mb-6">
+            {/**<p className="text-xl mb-6">
               {t('hasCompletedTheGenderSensitivityQuiz')} <br />
               {t('withAScoreOf')} <span className="font-bold">{percentage.toFixed(1)}%</span>
-            </p>
+            </p> */}
 
             <div className="flex justify-center mb-4">
               <div className="w-48 h-1 bg-[#EF7F1A]"></div>
             </div>
 
-            <p className="text-lg">
-              I-Saksham Education and Learning Foundation
+            <p className="text-lg font-semibold tracking-wide ">
+             {t('voice')}
             </p>
           </div>
         </div>
