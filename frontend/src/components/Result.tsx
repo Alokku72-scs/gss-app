@@ -355,7 +355,7 @@ const Result: React.FC = () => {
             </div>
 
             <p className="text-lg font-semibold tracking-wide ">
-             {t('voice')}
+             i-Saksham education and learning foundation: {t('voice')}
             </p>
           </div>
         </div>
