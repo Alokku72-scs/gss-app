@@ -19,12 +19,12 @@ const Result: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [isSendingEmail, setIsSendingEmail] = useState(false);
-  let message1="";
+  const [message1,setMessage1] = useState("");
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
     const storedScore = localStorage.getItem('quizScore');
     const storedPercentage = localStorage.getItem('quizPercentage');
-    console.log("storedScore",storedScore);
+    console.log("storedScore", storedScore);
     // console.log("Score",score);
 
     if (!storedName || !storedScore || !storedPercentage) {
@@ -34,15 +34,17 @@ const Result: React.FC = () => {
     const numericPercentage = parseInt(storedPercentage, 10);
 
     if (numericPercentage > 90) {
-      message1 = "Voice and Choice Leader? You represent an amazing community";
+      setMessage1("Voice and Choice Leader? You represent an amazing community");
+     
     } else if (numericPercentage > 70 && numericPercentage <= 90) {
-      message1 = "Voice and Choice Champion. You are on the right track";
+      setMessage1("Voice and Choice Champion. You are on the right track");
     } else if (score > 50 && score <= 70) {
-      message1 = "Voice and Choice Aware. Let's do better";
+      setMessage1("Voice and Choice Aware. Let's do better");
     } else {
-      message1 = "Your community needs a mindset shift";
+      setMessage1("Your community needs a mindset shift");
     }
-    console.log("message1",message1);
+    
+    console.log("message1", message1);
     setUserName(storedName);
     setScore(parseInt(storedScore, 10));
 
@@ -103,22 +105,22 @@ const Result: React.FC = () => {
 
   // const handleSendEmail = async () => {
   //   if (!email) return;
-  
+
   //   setIsSendingEmail(true);
-  
+
   //   try {
   //     const certificate = await handleGenerateCertificate();
   //     if (!certificate) throw new Error("Failed to generate certificate");
-  
+
   //     // Fetch the PDF as Blob and convert to Base64
   //     const response = await fetch(certificate.pdfUrl);
   //     const blob = await response.blob();
   //     const reader = new FileReader();
-      
+
   //     reader.readAsDataURL(blob);
   //     reader.onloadend = async () => {
   //       const base64Data = reader.result?.toString().split(',')[1]; // Get only Base64 content
-        
+
   //       // Send Email with Base64 PDF
   //       const params = {
   //         to_email: email,
@@ -128,7 +130,7 @@ const Result: React.FC = () => {
   //         attachment: base64Data, // Base64 encoded PDF
   //         filename: `${userName}_certificate.pdf`, // File name
   //       };
-  
+
   //       emailjs.send("service_foq71a3", "template_z2comz3", params,"Phy0lS6_2c9SSS-2T" )
   //         .then(response => {
   //           console.log("Email sent successfully!", response);
@@ -146,16 +148,16 @@ const Result: React.FC = () => {
   //     setIsSendingEmail(false);
   //   }
   // };
-  
+
   // const handleSendEmail = async (recipientEmail: string) => {
 
   //   if (!recipientEmail) {
   //     alert("Please enter a valid email address.");
   //     return;
   //   }
-  
+
   //   setIsSendingEmail(true);
-  
+
   //   try {
   //     // 1️⃣ Generate the certificate
   //     const certificate = await handleGenerateCertificate();
@@ -173,7 +175,7 @@ const Result: React.FC = () => {
   //      // certificate_url: certificate.pdfUrl,  // Add this to template
   //      attachment:base64PDF,
   //     };
-  
+
   //     // 3️⃣ Send Email through EmailJS
   //     const response = await emailjs.send(
   //       "service_foq71a3",  // Your EmailJS Service ID
@@ -181,7 +183,7 @@ const Result: React.FC = () => {
   //       templateParams,
   //       "Phy0lS6_2c9SSS-2T"   // Your EmailJS Public Key
   //     );
-  
+
   //     if (response.status === 200) {
   //       alert(`Email sent successfully to ${recipientEmail}!`);
   //     } else {
@@ -194,7 +196,7 @@ const Result: React.FC = () => {
   //     setIsSendingEmail(false);
   //   }
   // };
-  
+
   // // Helper Function: Convert Blob to Base64
   // const convertBlobToBase64 = (blob: Blob): Promise<string> => {
   //   return new Promise((resolve, reject) => {
@@ -204,36 +206,36 @@ const Result: React.FC = () => {
   //    reader.onerror = (error) => reject(error);
   //   });
   // };
-//   const handleSendEmail = async () => {
-//     if (!email) return;
+  //   const handleSendEmail = async () => {
+  //     if (!email) return;
 
-//     setIsSendingEmail(true);
+  //     setIsSendingEmail(true);
 
-//     const templateParams = {
-//      to_email: email, // This will be passed to EmailJS
-//     };
+  //     const templateParams = {
+  //      to_email: email, // This will be passed to EmailJS
+  //     };
 
-//   try {
-//     const response = await emailjs.send(
-//       "service_foq71a3",   // Replace with your EmailJS Service ID
-//       "template_z2comz3",  // Replace with your EmailJS Template ID
-//       templateParams,
-//       "Phy0lS6_2c9SSS-2T"    // Replace with your EmailJS Public Key
-//     );
+  //   try {
+  //     const response = await emailjs.send(
+  //       "service_foq71a3",   // Replace with your EmailJS Service ID
+  //       "template_z2comz3",  // Replace with your EmailJS Template ID
+  //       templateParams,
+  //       "Phy0lS6_2c9SSS-2T"    // Replace with your EmailJS Public Key
+  //     );
 
-//     if (response.status === 200) {
-//       alert(`Certificate has been sent to ${email}`);
-//       setEmail("");
-//     } else {
-//       alert("Failed to send email.");
-//     }
-//   } catch (error) {
-//     console.error("Error sending email:", error);
-//     alert("An error occurred.");
-//   } finally {
-//     setIsSendingEmail(false);
-//   }
-// };
+  //     if (response.status === 200) {
+  //       alert(`Certificate has been sent to ${email}`);
+  //       setEmail("");
+  //     } else {
+  //       alert("Failed to send email.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error sending email:", error);
+  //     alert("An error occurred.");
+  //   } finally {
+  //     setIsSendingEmail(false);
+  //   }
+  // };
 
   // const handleSendEmail = async () => {
   //   if (!email) return;
@@ -257,14 +259,14 @@ const Result: React.FC = () => {
       alert("Please enter a valid email address.");
       return;
     }
-  
+
     setIsSendingEmail(true);
-  
+
     try {
       // 1️⃣ Generate the certificate
       const certificate = await handleGenerateCertificate();
       if (!certificate) throw new Error("Certificate generation failed.");
-  
+
       // 2️⃣ Set EmailJS Template Params
       const templateParams = {
         name: userName || "User",
@@ -273,7 +275,7 @@ const Result: React.FC = () => {
         message: "Congratulations! Your certificate is ready. Download it below.",
         certificate_url: certificate.pdfUrl, // Add this to the template
       };
-  
+
       // 3️⃣ Send Email through EmailJS
       const response = await emailjs.send(
         "service_foq71a3",  // Your EmailJS Service ID
@@ -281,7 +283,7 @@ const Result: React.FC = () => {
         templateParams,
         "Phy0lS6_2c9SSS-2T"   // Your EmailJS Public Key
       );
-  
+
       if (response.status === 200) {
         alert(`Email sent successfully to ${recipientEmail}!`);
       } else {
@@ -294,7 +296,7 @@ const Result: React.FC = () => {
       setIsSendingEmail(false);
     }
   };
-  
+
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -304,13 +306,12 @@ const Result: React.FC = () => {
           {t('yourScore')}: {percentage.toFixed(1)}%
         </p>
 
-        <div className={`text-center p-6 rounded-lg mb-6 ${
-          percentage >= 80
+        <div className={`text-center p-6 rounded-lg mb-6 ${percentage >= 80
             ? 'bg-green-100 text-green-800'
             : percentage >= 60
               ? 'bg-blue-100 text-blue-800'
               : 'bg-yellow-100 text-yellow-800'
-        }`}>
+          }`}>
           <h2 className="text-2xl font-bold mb-2">{t('congratulations')}, {userName}!</h2>
           <p className="text-xl">
             {t('youAre')} <span className="font-bold">{category}</span>
@@ -339,13 +340,17 @@ const Result: React.FC = () => {
             backgroundImage: 'linear-gradient(45deg, rgba(239, 127, 26, 0.05) 25%, transparent 25%, transparent 50%, rgba(239, 127, 26, 0.05) 50%, rgba(239, 127, 26, 0.05) 75%, transparent 75%, transparent)',
             backgroundSize: '40px 40px'
           }}
-           >
+        >
           <div className="text-center">
             <div className="flex justify-center mb-4">
               <img src={logo} alt="logo" className=" object-contain" />
             </div>
 
             <h1 className="text-4xl font-bold text-[#EF7F1A] mb-6">{category}</h1>
+            <p className='text-3xl font-bold mb-4 text-[#EF7F1A]'>
+              {message1 ? message1 : "Default text"}
+            </p>
+
             <h2 className="text-2xl font-semibold mb-6">{t('certificateFrom')}</h2>
 
             <p className="text-xl mb-4">
@@ -366,9 +371,8 @@ const Result: React.FC = () => {
             </div>
 
             <p className="text-lg font-semibold tracking-wide ">
-             i-Saksham education and learning foundation: {t('voice')}
+              i-Saksham education and learning foundation: {t('voice')}
             </p>
-            <p className='text-3xl font-bold mb-4 text-[#EF7F1A]'>{message1}</p>
           </div>
         </div>
 
