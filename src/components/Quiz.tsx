@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ChevronRight } from 'lucide-react';
+import { useLocation } from "react-router-dom";
 
 interface Question {
   text: string;
@@ -13,6 +14,10 @@ interface Question {
 const Quiz: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const  selectedLanguage  = location.state || { selectedLanguage: "en" };
+
   const questions: Question[] = t('questions', { returnObjects: true });
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -59,6 +64,36 @@ const Quiz: React.FC = () => {
     return 0;
   };
 
+  const handleSubmit = async (score: number) => {
+
+    const totalScore = Object.values(answers).reduce((sum, score) => sum + score, 0) + score;
+    const maxPossibleScore = questions.length * 4;
+    const percentage = (totalScore / maxPossibleScore) * 100;
+
+    localStorage.setItem('quizScore', totalScore.toString());
+    localStorage.setItem('quizPercentage', percentage.toString());
+
+    const response = await fetch("http://localhost:5000/quiz/save-quiz-data", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        selectedLanguage:selectedLanguage.language,
+        answers: Object.keys(selectedOptions).map(index => ({
+          question: questions[Number(index)].text,
+          selectedOptions: selectedOptions[Number(index)].map(optIndex => questions[Number(index)].options[optIndex])
+        }))
+      })
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("New Total Visits:", data.newCount);
+      navigate('/result');
+    } else {
+      console.error('Error saving quiz data');
+    }
+  };
+
   const handleNext = () => {
     const selected = selectedOptions[currentQuestionIndex] || [];
     const score = calculateScore(currentQuestionIndex, selected);
@@ -71,14 +106,7 @@ const Quiz: React.FC = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
     } else {
-      const totalScore = Object.values(answers).reduce((sum, score) => sum + score, 0) + score;
-      const maxPossibleScore = questions.length * 4;
-      const percentage = (totalScore / maxPossibleScore) * 100;
-
-      localStorage.setItem('quizScore', totalScore.toString());
-      localStorage.setItem('quizPercentage', percentage.toString());
-
-      navigate('/result');
+      handleSubmit(score);
     }
   };
 

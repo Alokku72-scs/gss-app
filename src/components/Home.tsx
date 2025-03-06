@@ -11,12 +11,14 @@ const Home: React.FC = () => {
   const [visitCount, setVisitCount] = useState(0);
   //const [isLoading, setIsLoading] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
+  const [language,setLanguage] = useState("English");
   const [showPopup, setShowPopup] = useState(true)
 
-  const changeLanguage = (lng: string) => {
+  const changeLanguage = (lng: string,lng1:string) => {
     i18n.changeLanguage(lng);
     setShowPopup(true); // Show the popup
     setSelectedLanguage(lng); // Show quiz UI
+    setLanguage(lng1);
   };
 
   const handleClosePopup = () => {
@@ -52,19 +54,23 @@ const Home: React.FC = () => {
   ];
 
   useEffect(() => {
-    const storedCount = localStorage.getItem("visitCount");
-    let count = storedCount ? parseInt(storedCount, 10) : 0;
+    const fetchTotalVisits = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/quiz/total-visits");
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
 
-    const sessionUpdated = sessionStorage.getItem("visitUpdated");
+            const data = await response.json();
+            setVisitCount(data.totalVisits || 0); // Ensure a default value of 0
+        } catch (error) {
+            console.error("Error fetching total visits:", error);
+        }
+    };
 
-    if (!sessionUpdated) {
-      count += 1;  // Increment visit count
-      localStorage.setItem("visitCount", count.toString());
-      sessionStorage.setItem("visitUpdated", "true"); // Mark session update
-    }
+    fetchTotalVisits();
+}, []);
 
-    setVisitCount(count); // Update state
-  }, []);
 
 
 
@@ -72,7 +78,7 @@ const Home: React.FC = () => {
     e.preventDefault();
     if (name.trim()) {
       localStorage.setItem("userName", name);
-      navigate("/quiz");
+      navigate("/quiz",{state:{language}});
     }
   };
 
@@ -98,7 +104,7 @@ const Home: React.FC = () => {
             {allLanguages.map((language) => (
               <button
                 key={language.code}
-                onClick={() => changeLanguage(language.code)}
+                onClick={() => changeLanguage(language.code,language.name)}
                 className="bg-[#D06C15] text-white py-2 px-4 rounded-md hover:bg-[#B75A10] transition duration-300"
               >
                 {language.name}
