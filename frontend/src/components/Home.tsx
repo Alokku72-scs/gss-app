@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     { code: "en", name: "English" },
     // { code: "zh", name: "中文 (Chinese)" },
     // { code: "es", name: "Español (Spanish)" },
-    { code: "ar", name: "العربية (Arabic)" },
+    // { code: "ar", name: "العربية (Arabic)" },
     { code: "hi", name: "हिन्दी (Hindi)" },
   ];
 
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     { code: "kn", name: "ಕನ್ನಡ (Kannada)" },
     { code: "ml", name: "മലയാളം (Malayalam)" },
     { code: "pa", name: "ਪੰਜਾਬੀ (Punjabi)" },
-    { code: "or", name: "ଓଡ଼ିଆ (Odia)" },
+    // { code: "or", name: "ଓଡ଼ିଆ (Odia)" },
   ];
 
   const allLanguages = [

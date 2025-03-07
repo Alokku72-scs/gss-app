@@ -24,7 +24,7 @@ const SharePopup: React.FC<SharePopupProps> = ({ onClose }) => {
           shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
           break;
         case 'Twitter':
-          shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}&hashtags=VoiceAndChoice,IWD2025,iSaksham`;
+          shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`;
           break;
         case 'LinkedIn':
           shareLink = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;

@@ -23,6 +23,7 @@ const Quiz: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<{ [key: number]: number }>({});
   const [score, setScore] = useState(0);
+  const [submit, setSubmit] = useState(false);
 
   useEffect(() => {
     const userName = localStorage.getItem('userName');
@@ -66,10 +67,10 @@ const Quiz: React.FC = () => {
       }
     };
 
-    if (currentQuestionIndex === questions.length - 1) {
+    if (submit) {
       handleSubmit();
     }
-  }, [score, currentQuestionIndex]);
+  }, [submit]);
 
   const handleNext = () => {
     const selected = selectedOption[currentQuestionIndex];
@@ -78,6 +79,8 @@ const Quiz: React.FC = () => {
     }
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
+    } else {
+      setSubmit(true);
     }
   };
 
