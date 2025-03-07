@@ -344,25 +344,25 @@ const Result: React.FC = () => {
       </div>
 
       {/* Certificate */}
-      <div className="bg-white rounded-lg shadow-lg p-8 m-8">
+      <div className="bg-white rounded-lg shadow-lg m-8">
 
         <div
           ref={certificateRef}
-          className="w-4xl h-3xl border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-4"
+          className="border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-4"
           style={{
             backgroundImage: 'linear-gradient(45deg, rgba(239, 127, 26, 0.05) 25%, transparent 25%, transparent 50%, rgba(239, 127, 26, 0.05) 50%, rgba(239, 127, 26, 0.05) 75%, transparent 75%, transparent)',
             backgroundSize: '40px 40px'
           }}
         >
          
-          <div className="text-center bg-white p-8 rounded-lg shadow-lg">
+          <div className="text-center bg-white rounded-lg shadow-lg py-8 px-12">
             {/* Logo */}
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center m-2">
               <img src={logo} alt="I-Saksham Logo" className="h-16 object-contain" />
             </div>
-
+            <br/>
             {/* Certification Text */}
-            <p className="text-xl text-gray-700 mb-2">{t('thisIsToCertifyThat')}</p>
+            <p className="text-xl font-medium text-[#222] m-2">{t('thisIsToCertifyThat')}</p>
 
             <p className='m-8'>
               <p className="text-4xl font-extrabold text-[#EF7F1A] my-4">{userName}</p>
@@ -372,26 +372,24 @@ const Result: React.FC = () => {
             </p>
 
             {/* Certificate Description */}
-            <p className="text-xl font-medium text-gray-800 m-6 leading-relaxed">
+            <p className="text-xl font-medium text-[#222] m-6 leading-relaxed">
               {t('certificateFrom')}
-            </p>
 
+            </p>
+            <br/>
             {/* Organization Footer */}
-            <p className="text-lg font-semibold text-gray-900">
-              I-Saksham Education and Learning Foundation:{" "}
-              <span className="text-gray-700">{t('voice')}</span>
+            <p className="text-[#EF7F1A] m-2">
+              <span className='font-bold'>
+              I-Saksham Education and Learning Foundation
+              </span>
+              <br/>
+              <span className='font-semibold'>
+              {t('voice')}
+              </span>
             </p>
           </div>
 
         </div>
-
-
-        {/**<p className="text-xl mb-6">
-              {t('hasCompletedTheGenderSensitivityQuiz')} <br />
-              {t('withAScoreOf')} <span className="font-bold">{percentage.toFixed(1)}%</span>
-            </p> */}
-
-
 
         {/* Certificate actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
