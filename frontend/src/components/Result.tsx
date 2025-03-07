@@ -19,7 +19,7 @@ const Result: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [isSendingEmail, setIsSendingEmail] = useState(false);
-  const [message1,setMessage1] = useState("");
+  const [message1, setMessage1] = useState("");
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
     const storedScore = localStorage.getItem('quizScore');
@@ -34,17 +34,16 @@ const Result: React.FC = () => {
     const numericPercentage = parseInt(storedPercentage, 10);
 
     if (numericPercentage > 90) {
-      setMessage1("Voice and Choice Leader? You represent an amazing community");
-     
+      setMessage1(t('VOICE_CHOICE_LEADER'));
     } else if (numericPercentage > 70 && numericPercentage <= 90) {
-      setMessage1("Voice and Choice Champion. You are on the right track");
+      setMessage1(t('VOICE_CHOICE_CHAMPION'));
     } else if (score > 50 && score <= 70) {
-      setMessage1("Voice and Choice Aware. Let's do better");
+      setMessage1(t('VOICE_CHOICE_AWARE'));
     } else {
-      setMessage1("Your community needs a mindset shift");
+      setMessage1(t('VOICE_CHOICE_MINDSET_SHIFT'));
     }
-    
-    console.log("message1", message1);
+
+    console.log("message1:", message1);
     setUserName(storedName);
     setScore(parseInt(storedScore, 10));
 
@@ -73,13 +72,50 @@ const Result: React.FC = () => {
         text: `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`,
         hashtags: ['GenderSensitivity', 'ISaksham']
       });
-
+      console.log("handleGenerateCertificate: PNG URL= ", certificate.pngUrl);
       return certificate;
     } catch (error) {
       console.error('Error generating certificate:', error);
       return null;
     }
   };
+  //   const handleGenerateCertificate = async () => {
+  //     if (!certificateRef.current) return null;
+
+  //     try {
+  //       const certificate = await generateCertificateImages(certificateRef.current, {
+  //         title: 'My Gender Sensitivity Certificate',
+  //         text: `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`,
+  //         hashtags: ['GenderSensitivity', 'ISaksham']
+  //       });
+
+  //       console.log("Temporary Certificate PNG URL:", certificate.pngUrl);
+
+  //       // Convert data URL to Blob
+  //       const response = await fetch(certificate.pngUrl);
+  //       const blob = await response.blob();
+  //       const formData = new FormData();
+  //       formData.append('certificate', blob, `${userName}_certificate.png`);
+  //       formData.append('userName', userName);
+  //       formData.append('percentage', percentage.toFixed(1));
+
+  //       // Send to backend
+  //       const uploadResponse = await fetch('http://localhost:5000/quiz/upload-certificate', {
+  //         method: 'POST',
+  //         body: formData
+  //       });
+
+  //       const data = await uploadResponse.json(); // Get response from backend
+  //       console.log('Saved Certificate URL1:', data.fileUrl);
+  //       console.log("Saved Certificate URL:", data.filePath); // This is the permanent URL
+
+  //       return data.filePath; // Use this permanent URL
+  //     } catch (error) {
+  //       console.error('Error generating certificate:', error);
+  //       return null;
+  //     }
+  // };
+
 
   const handleDownloadCertificate = async () => {
     setIsGeneratingPDF(true);
@@ -301,24 +337,30 @@ const Result: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Result summary */}
-      <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <p className="text-3xl font-bold text-center mb-6">
-          {t('yourScore')}: {percentage.toFixed(1)}%
-        </p>
-
-        <div className={`text-center p-6 rounded-lg mb-6 ${percentage >= 80
-            ? 'bg-green-100 text-green-800'
-            : percentage >= 60
-              ? 'bg-blue-100 text-blue-800'
-              : 'bg-yellow-100 text-yellow-800'
-          }`}>
-          <h2 className="text-2xl font-bold mb-2">{t('congratulations')}, {userName}!</h2>
-          <p className="text-xl">
-            {t('youAre')} <span className="font-bold">{category}</span>
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+        <div className='flex justify-center'>
+          <p className="justify-center text-2xl font-bold mb-2 ">{t('congratulations')}, {userName}!🎊
+            <span className='text-3xl p-3'>{t('yourScore')}:
+            </span>{percentage.toFixed(1)}%
           </p>
         </div>
 
-        <div className="flex justify-center">
+        <div className={`text-center p-2 rounded-lg mb-2 ${percentage >= 80
+          ? 'bg-green-100 text-green-800'
+          : percentage >= 60
+            ? 'bg-blue-100 text-blue-800'
+            : 'bg-yellow-100 text-yellow-800'
+          }`}>
+
+          <p className="text-xl">
+            {t('youAre')} <span className="font-bold">{category}</span>
+          </p>
+          <p className='text-2xl font-bold mb-4 text-[#EF7F1A]'>
+            {message1 ? message1 : "Default text"}
+          </p>
+        </div>
+
+        {/* <div className="flex justify-center">
           <button
             onClick={handleTryAgain}
             className="flex items-center px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition duration-300"
@@ -326,12 +368,12 @@ const Result: React.FC = () => {
             <RefreshCw size={20} className="mr-2" />
             {t('tryAgain')}
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* Certificate */}
       <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-        <h2 className="text-2xl font-bold text-center mb-6">{t('certificateFrom')}</h2>
+        {/* <h2 className="text-2xl font-bold text-center mb-6">{t('certificateFrom')}</h2> */}
 
         <div
           ref={certificateRef}
@@ -341,40 +383,50 @@ const Result: React.FC = () => {
             backgroundSize: '40px 40px'
           }}
         >
-          <div className="text-center">
-            <div className="flex justify-center mb-4">
-              <img src={logo} alt="logo" className=" object-contain" />
+         
+          <div className="text-center bg-white p-8 rounded-lg shadow-lg">
+            {/* Logo */}
+            <div className="flex justify-center mb-6">
+              <img src={logo} alt="I-Saksham Logo" className="h-16 object-contain" />
             </div>
 
-            <h1 className="text-4xl font-bold text-[#EF7F1A] mb-6">{category}</h1>
-            <p className='text-2xl font-bold mb-4 text-[#EF7F1A]'>
-              {message1 ? message1 : "Default text"}
+            {/* Category (Title) */}
+            <h1 className="text-4xl font-extrabold text-[#EF7F1A] mb-4 uppercase tracking-wide">
+              {category}
+            </h1>
+
+            {/* Certification Text */}
+            <p className="text-xl text-gray-700 mb-2">{t('thisIsToCertifyThat')}</p>
+
+            {/* User Name */}
+            <p className="text-4xl font-extrabold text-[#EF7F1A] mb-3">{userName}</p>
+
+            {/* Horizontal Line */}
+            <div className="flex justify-center mb-4">
+              <div className="w-40 h-1 bg-[#EF7F1A] rounded-full"></div>
+            </div>
+
+            {/* Certificate Description */}
+            <p className="text-xl font-medium text-gray-800 mb-6 tracking-wide leading-relaxed" style={{ wordSpacing: "3px" }}>
+              {t('certificateFrom')}
             </p>
 
-            <h2 className="text-2xl font-semibold mb-6">{t('certificateFrom')}</h2>
-
-            <p className="text-xl mb-4">
-              {t('thisIsToCertifyThat')}
+            {/* Organization Footer */}
+            <p className="text-lg font-semibold text-gray-900">
+              I-Saksham Education and Learning Foundation:{" "}
+              <span className="text-gray-700">{t('voice')}</span>
             </p>
+          </div>
 
-            <p className="text-3xl font-bold mb-4 text-[#EF7F1A]">
-              {userName}
-            </p>
+        </div>
 
-            {/**<p className="text-xl mb-6">
+
+        {/**<p className="text-xl mb-6">
               {t('hasCompletedTheGenderSensitivityQuiz')} <br />
               {t('withAScoreOf')} <span className="font-bold">{percentage.toFixed(1)}%</span>
             </p> */}
 
-            <div className="flex justify-center mb-4">
-              <div className="w-48 h-1 bg-[#EF7F1A]"></div>
-            </div>
 
-            <p className="text-lg font-semibold tracking-wide ">
-              i-Saksham education and learning foundation: {t('voice')}
-            </p>
-          </div>
-        </div>
 
         {/* Certificate actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
