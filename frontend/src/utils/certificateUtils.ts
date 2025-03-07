@@ -15,7 +15,17 @@ export const generateCertificateImages = async (
 
   try {
     // Generate PNG
-    const canvas = await html2canvas(certificateRef, {
+
+    const clone = certificateRef.cloneNode(true) as HTMLElement;
+    clone.style.width = '800px';
+    clone.style.height = '565px';
+    clone.style.position = 'absolute';
+    clone.style.top = '0';
+    clone.style.left = '0';
+    clone.style.zIndex = '-1';
+    document.body.appendChild(clone);
+
+    const canvas = await html2canvas(clone, {
       scale: 2,
       logging: false,
       useCORS: true,
@@ -23,6 +33,7 @@ export const generateCertificateImages = async (
     });
 
     const pngUrl = canvas.toDataURL('image/png');
+    document.body.removeChild(clone);
 
     // Generate PDF
     const pdf = new jsPDF({

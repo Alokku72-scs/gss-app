@@ -32,7 +32,7 @@ const Result: React.FC = () => {
       setMessage(t('VOICE_CHOICE_LEADER'));
     } else if (numericPercentage > 70 && numericPercentage <= 90) {
       setMessage(t('VOICE_CHOICE_CHAMPION'));
-    } else if (score > 50 && score <= 70) {
+    } else if (numericPercentage > 50 && numericPercentage <= 70) {
       setMessage(t('VOICE_CHOICE_AWARE'));
     } else {
       setMessage(t('VOICE_CHOICE_MINDSET_SHIFT'));
@@ -84,15 +84,15 @@ const Result: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto sm:flex sm:flex-col items-center">
       {/* Result summary */}
       <div className="bg-white rounded-lg shadow-lg m-2">
-        <div className='flex flex-col items-center justify-center m-4'>
-          <p className="text-center text-3xl font-bold m-2">🎊{t('congratulations')}, {userName}!🎊</p>
-          <p className='text-center text-2xl m-2'>{t('yourScore')} {score}</p>
+        <div className='flex flex-col items-center m-4 flex-auto'>
+          <p className="shrink text-center text-3xl font-bold m-2">🎊{t('congratulations')}, {userName}!🎊</p>
+          <p className='shrink text-center text-2xl m-2'>{t('yourScore')} {score}</p>
         </div>
 
-        <div className="text-center p-2 rounded-lg p-2 bg-[#EF7F1A]">
+        <div className="text-center px-12 py-6 rounded-lg p-2 bg-[#EF7F1A]">
           <p className="text-xl">
             {t('youAre')}
           </p>
@@ -103,18 +103,18 @@ const Result: React.FC = () => {
       </div>
 
       {/* Certificate */}
-      <div className="bg-white rounded-lg shadow-lg m-8">
+      <div className="m-8">
 
         <div
           ref={certificateRef}
-          className="border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-4"
+          className="sm:flex items-center border-8 border-[#EF7F1A] rounded-lg p-8 bg-white max-w-[800px]"
           style={{
             backgroundImage: 'linear-gradient(45deg, rgba(239, 127, 26, 0.05) 25%, transparent 25%, transparent 50%, rgba(239, 127, 26, 0.05) 50%, rgba(239, 127, 26, 0.05) 75%, transparent 75%, transparent)',
             backgroundSize: '40px 40px'
           }}
         >
          
-          <div className="text-center bg-white rounded-lg shadow-lg py-8 px-12">
+          <div className="text-center justify-center bg-white rounded-lg shadow-lg py-8 px-12">
             {/* Logo */}
             <div className="flex justify-center m-2">
               <img src={logo} alt="I-Saksham Logo" className="h-16 object-contain" />
@@ -149,24 +149,25 @@ const Result: React.FC = () => {
           </div>
 
         </div>
+      </div>
 
-        {/* Certificate actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-          <div>
-            <div className="flex flex-row flex-wrap gap-2">
-              <button
-                  onClick={handleDownloadCertificate}
-                  disabled={isGeneratingPDF}
-                  className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300 disabled:bg-green-400"
-                >
-                  <Download size={20} className="mr-2" />
-                  {isGeneratingPDF ? 'Generating...' : t('downloadCertificate')}
-              </button>
-              <ShareButton/>
-            </div>
+      {/* Certificate actions */}
+      <div className="sm:flex sm:flex-row pb-6">
+        <div>
+          <div className="flex flex-row flex-wrap gap-2 mx-4 justify-center">
+            <button
+                onClick={handleDownloadCertificate}
+                disabled={isGeneratingPDF}
+                className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300 disabled:bg-green-400"
+              >
+                <Download size={20} className="mr-2" />
+                {isGeneratingPDF ? 'Generating...' : t('downloadCertificate')}
+            </button>
+            <ShareButton/>
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
