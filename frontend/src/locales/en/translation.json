@@ -37,7 +37,7 @@
   "VOICE_CHOICE_MINDSET_SHIFT": "Gender Biased. Your community needs a mindset shift!!",
   "genderQuizIntro": "",
   "questions": [
-     {
+    {
       "text": "In your society, how are responsibilities during mealtime typically divided in households?",
       "options": [
         "Women are primarily responsible for both cooking and serving during mealtimes.",
@@ -45,12 +45,10 @@
         "Cooking and serving are shared responsibilities, with tasks allocated based on availability and interest.",
         "Men primarily cook, while serving is carried out by any available family member."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "A shared responsibility model, where tasks are allocated based on availability and interest, is viewed as the most balanced approach."
     },
-        {
+    {
       "text": "In most households in your society, how are women typically involved in financial decision-making?",
       "options": [
         "Men usually make all key financial decisions with little to no input from women.",
@@ -58,12 +56,10 @@
         "Financial decisions are made collectively, with women having an equal voice along with men.",
         "Financial matters are divided by category. men manage major investments while women handle everyday expenses."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "A collective approach that values equal participation ensures that both men and women contribute to household financial decisions."
     },
-        {
+    {
       "text": "In your society, how is the decision of a man to take paternity leave after the birth of his child generally perceived?",
       "options": [
         "It is seen as unnecessary since childcare is viewed primarily as a woman's responsibility.",
@@ -71,12 +67,10 @@
         "It is supported, recognizing that fathers play an important role in early childcare.",
         "It is acceptable only if no female relatives are available to assist."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "Supporting paternity leave acknowledges the important role of fathers in childcare and challenges traditional gender roles."
     },
-       {
+    {
       "text": "In your village panchayat meetings, if a female sarpanch is presenting water conservation plans and some male members repeatedly interrupt her, what is the general response observed in your society?",
       "options": [
         "The female sarpanch starts speaking louder to overcome the interruptions.",
@@ -84,9 +78,7 @@
         "The female sarpanch sits down and let male members take it forward.",
         "Other women start interrupting to counterbalance the situation."
       ],
-      "correctAnswers": [
-        1
-      ],
+      "correctAnswer": 1,
       "explanation": "Ensuring equal speaking time and respect for every member is considered the most balanced and inclusive approach in society."
     },
     {
@@ -97,9 +89,7 @@
         "A mix of gender-specific and mixed activities is arranged to balance tradition with equality.",
         "Only sports that are traditionally accepted for both genders are included."
       ],
-      "correctAnswers": [
-        1
-      ],
+      "correctAnswer": 1,
       "explanation": "Allowing all students to participate in any sport they choose regardless of gender is the most inclusive and balanced approach."
     },
     {
@@ -110,14 +100,9 @@
         "The family supports her educational aspirations while constructively addressing safety concerns.",
         "The family recommends distance learning so she can remain at home."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "Supporting educational aspirations while constructively addressing safety concerns is considered the most balanced and progressive approach."
     },
-
-
-
     {
       "text": "In your society, how is a teenage girl's interest in learning to ride a motorcycle generally received?",
       "options": [
@@ -126,9 +111,7 @@
         "Her interest is supported, with proper training and safety measures provided.",
         "She is advised to opt for learning to ride a scooter instead, which is seen as more suitable for girls."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "Supporting her interest with proper training and safety measures respects her autonomy while addressing safety concerns."
     },
     {
@@ -139,9 +122,7 @@
         "Comprehensive education for all genders, incorporating both joint and separate sessions as needed.",
         "Basic information provided to all, with detailed sessions offered only to married individuals."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "A comprehensive approach that includes both joint and separate sessions as needed ensures that everyone is well-informed about reproductive health."
     },
     {
@@ -152,9 +133,7 @@
         "She receives the same level of support and resources as any other community member.",
         "She is given special advantages due to her vulnerable position."
       ],
-      "correctAnswers": [
-        2
-      ],
+      "correctAnswer": 2,
       "explanation": "Providing equal support without discrimination empowers her and recognizes her potential."
     },
     {
@@ -165,9 +144,7 @@
         "They engage in community discussions to explore both perspectives on gender roles.",
         "They accept it as a reflection of current social norms, while hoping for gradual change over time."
       ],
-      "correctAnswers": [
-        0
-      ],
+      "correctAnswer": 0,
       "explanation": "Emphasizing the candidate's independent leadership challenges conventional norms and supports a more progressive view of decision-making."
     }
   ]

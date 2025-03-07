@@ -24,7 +24,7 @@ const Result: React.FC = () => {
     const storedName = localStorage.getItem('userName');
     const storedScore = localStorage.getItem('quizScore');
     const storedPercentage = localStorage.getItem('quizPercentage');
-    console.log("storedScore", storedScore);
+    // console.log("storedScore", storedScore);
     // console.log("Score",score);
 
     if (!storedName || !storedScore || !storedPercentage) {
@@ -43,7 +43,6 @@ const Result: React.FC = () => {
       setMessage1(t('VOICE_CHOICE_MINDSET_SHIFT'));
     }
 
-    console.log("message1:", message1);
     setUserName(storedName);
     setScore(parseInt(storedScore, 10));
 

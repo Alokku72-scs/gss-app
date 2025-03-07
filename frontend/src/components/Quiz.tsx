@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 interface Question {
   text: string;
   options: string[];
-  correctAnswers: number[];
+  correctAnswer: number;
   explanation: string;
 }
 
@@ -18,11 +18,11 @@ const Quiz: React.FC = () => {
   const location = useLocation();
   const  selectedLanguage  = location.state || { selectedLanguage: "en" };
 
-  const questions: Question[] = t('questions', { returnObjects: true });
+  const questions: Question[] = t('questions', { returnObjects: true }) as Question[];
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedOptions, setSelectedOptions] = useState<{ [key: number]: number[] }>({});
-  const [answers, setAnswers] = useState<{ [key: number]: number }>({});
+  const [selectedOption, setSelectedOption] = useState<{ [key: number]: number }>({});
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const userName = localStorage.getItem('userName');
@@ -31,43 +31,16 @@ const Quiz: React.FC = () => {
     }
   }, [navigate]);
 
-  const handleOptionToggle = (optionIndex: number) => {
-    setSelectedOptions(prev => {
-      const current = prev[currentQuestionIndex] || [];
-      const updated = current.includes(optionIndex)
-        ? current.filter(idx => idx !== optionIndex)
-        : [...current, optionIndex];
-
-      return {
-        ...prev,
-        [currentQuestionIndex]: updated
-      };
+  const handleOptionSelect = (optionIndex: number) => {
+    setSelectedOption({
+      ...selectedOption,
+      [currentQuestionIndex]: optionIndex
     });
   };
 
-  const calculateScore = (questionIndex: number, selected: number[]) => {
-    const question = questions[questionIndex];
-    const correctAnswers = question.correctAnswers;
+  const handleSubmit = async (totalScore: number) => {
 
-    if (selected.length === correctAnswers.length && correctAnswers.every(ans => selected.includes(ans))) {
-      return 4; // Full score
-    }
-    if (selected.length > 0 && selected.every(sel => correctAnswers.includes(sel))) {
-      return 3; // Good score
-    }
-    if (selected.some(sel => correctAnswers.includes(sel))) {
-      return 2; // Partial score
-    }
-    if (selected.length > 0) {
-      return 1; // Low score
-    }
-    return 0;
-  };
-
-  const handleSubmit = async (score: number) => {
-
-    const totalScore = Object.values(answers).reduce((sum, score) => sum + score, 0) + score;
-    const maxPossibleScore = questions.length * 4;
+    const maxPossibleScore = questions.length * 10;
     const percentage = (totalScore / maxPossibleScore) * 100;
 
     localStorage.setItem('quizScore', totalScore.toString());
@@ -78,16 +51,14 @@ const Quiz: React.FC = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         selectedLanguage:selectedLanguage.language,
-        answers: Object.keys(selectedOptions).map(index => ({
+        answers: Object.keys(selectedOption).map(index => ({
           question: questions[Number(index)].text,
-          selectedOptions: selectedOptions[Number(index)].map(optIndex => questions[Number(index)].options[optIndex])
+          selectedOption: questions[Number(index)].options[selectedOption[Number(index)] - 1]
         }))
       })
     });
 
     if (response.ok) {
-      const data = await response.json();
-      console.log("New Total Visits:", data.newCount);
       navigate('/result');
     } else {
       console.error('Error saving quiz data');
@@ -95,13 +66,10 @@ const Quiz: React.FC = () => {
   };
 
   const handleNext = () => {
-    const selected = selectedOptions[currentQuestionIndex] || [];
-    const score = calculateScore(currentQuestionIndex, selected);
-
-    setAnswers(prev => ({
-      ...prev,
-      [currentQuestionIndex]: score
-    }));
+    const selected = selectedOption[currentQuestionIndex];
+    if (questions[currentQuestionIndex].correctAnswer === selected) {
+      setScore(score + 10);
+    }
 
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
@@ -111,8 +79,6 @@ const Quiz: React.FC = () => {
   };
 
   const currentQuestion = questions[currentQuestionIndex];
-  const selectedOptionsForCurrentQuestion = selectedOptions[currentQuestionIndex] || [];
-  const isNextDisabled = selectedOptionsForCurrentQuestion.length === 0; // Disable if no option is selected
 
   return (
       <div className="flex items-center justify-center min-h-screen">
@@ -144,19 +110,19 @@ const Quiz: React.FC = () => {
                   <div
                     key={index}
                     className={`p-4 border rounded-lg cursor-pointer transition-colors ${
-                      selectedOptionsForCurrentQuestion.includes(index)
+                      selectedOption[currentQuestionIndex] === index
                         ? 'bg-[#FDF1E5] border-[#EF7F1A]'
                         : 'border-gray-200 hover:bg-gray-50'
                     }`}
-                    onClick={() => handleOptionToggle(index)}
+                    onClick={() => handleOptionSelect(index)}
                   >
                     <div className="flex items-start">
                       <div className={`w-6 h-6 flex items-center justify-center rounded-full border ${
-                        selectedOptionsForCurrentQuestion.includes(index)
+                        selectedOption[currentQuestionIndex] === index
                           ? 'border-[#EF7F1A] bg-[#EF7F1A] text-white'
                           : 'border-gray-300'
                       } mr-3 flex-shrink-0 mt-0.5`}>
-                        {selectedOptionsForCurrentQuestion.includes(index) && '✓'}
+                        {selectedOption[currentQuestionIndex] === index && '✓'}
                       </div>
                       <span>{option}</span>
                     </div>
@@ -168,9 +134,9 @@ const Quiz: React.FC = () => {
             <div className="flex justify-center">
               <button
                 onClick={handleNext}
-                disabled={isNextDisabled}
+                disabled={selectedOption[currentQuestionIndex] === undefined}
                 className={`flex items-center px-4 py-2 rounded-md ${
-                  isNextDisabled
+                  selectedOption[currentQuestionIndex] === undefined
                     ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
                     : 'bg-[#EF7F1A] text-white hover:bg-[#D06C15]'
                 }`}
