@@ -38,42 +38,46 @@ const Quiz: React.FC = () => {
     });
   };
 
-  const handleSubmit = async (totalScore: number) => {
+  useEffect(() => {
+    const handleSubmit = async () => {
 
-    const percentage = totalScore
+      const totalScore = score;
+      const percentage = score;
 
-    localStorage.setItem('quizScore', totalScore.toString());
-    localStorage.setItem('quizPercentage', percentage.toString());
+      localStorage.setItem('quizScore', totalScore.toString());
+      localStorage.setItem('quizPercentage', percentage.toString());
 
-    const response = await fetch("https://gss.i-saksham.org/quiz/save-quiz-data", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        selectedLanguage:selectedLanguage.language,
-        answers: Object.keys(selectedOption).map(index => ({
-          question: questions[Number(index)].text,
-          selectedOption: questions[Number(index)].options[selectedOption[Number(index)]]
-        }))
-      })
-    });
+      const response = await fetch("https://gss.i-saksham.org/quiz/save-quiz-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          selectedLanguage:selectedLanguage.language,
+          answers: Object.keys(selectedOption).map(index => ({
+            question: questions[Number(index)].text,
+            selectedOption: questions[Number(index)].options[selectedOption[Number(index)]]
+          }))
+        })
+      });
 
-    if (response.ok) {
-      navigate('/result');
-    } else {
-      console.error('Error saving quiz data');
+      if (response.ok) {
+        navigate('/result');
+      } else {
+        console.error('Error saving quiz data');
+      }
+    };
+
+    if (currentQuestionIndex === questions.length - 1) {
+      handleSubmit();
     }
-  };
+  }, [score, currentQuestionIndex]);
 
   const handleNext = () => {
     const selected = selectedOption[currentQuestionIndex];
     if (questions[currentQuestionIndex].correctAnswer === selected) {
       setScore(score + 10);
     }
-
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1);
-    } else {
-      handleSubmit(score);
     }
   };
 
