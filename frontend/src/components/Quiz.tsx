@@ -73,7 +73,7 @@ const Quiz: React.FC = () => {
     localStorage.setItem('quizScore', totalScore.toString());
     localStorage.setItem('quizPercentage', percentage.toString());
 
-    const response = await fetch("http://localhost:5000/quiz/save-quiz-data", {
+    const response = await fetch("http://20.197.54.245/quiz/save-quiz-data", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
