@@ -4,24 +4,18 @@ import {
   Twitter,
   Linkedin,
   Share2,
-  X,
   MessageCircle,
 } from "lucide-react";
 
 interface SharePopupProps {
   onClose: () => void;
-  onShare: () => Promise<{
-    pngUrl: string;
-    pdfUrl: string;
-  }>;
 }
 
-const SharePopup: React.FC<SharePopupProps> = ({ onClose, onShare }) => {
+const SharePopup: React.FC<SharePopupProps> = ({ onClose }) => {
   const handleShare = async (platform: string) => {
     try {
-      const urls = await onShare();
-      const shareUrl = window.location.href;
-      const shareText = "Check out my Gender Sensitivity Certificate!";
+      const shareUrl = "https://gss.i-saksham.org";
+      const shareText = "Check how gender sensitive your community is. I just did. #VoiceAndChoice #IWD2025 #iSaksham";
 
       let shareLink = '';
 
@@ -30,7 +24,7 @@ const SharePopup: React.FC<SharePopupProps> = ({ onClose, onShare }) => {
           shareLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
           break;
         case 'Twitter':
-          shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}&hashtags=GenderSensitivity,ISaksham`;
+          shareLink = `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}&hashtags=VoiceAndChoice,IWD2025,iSaksham`;
           break;
         case 'LinkedIn':
           shareLink = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
@@ -94,7 +88,7 @@ const SharePopup: React.FC<SharePopupProps> = ({ onClose, onShare }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
       <div className="bg-white rounded-lg shadow-xl p-6 w-[320px] max-w-full mx-4">
-        <h2 className="text-xl font-bold text-center mb-6">Share Certificate</h2>
+        <h2 className="text-xl font-bold text-center mb-6">Share Link</h2>
 
         <div className="grid grid-cols-3 gap-4 mb-6">
           {socialPlatforms.map((platform) => (

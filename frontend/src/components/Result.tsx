@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Download, Mail, RefreshCw } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { generateCertificateImages } from '../utils/certificateUtils';
 import ShareButton from './ShareButton';
 import logo from "../assets/logo.png";
-import emailjs from "@emailjs/browser";
 
 const Result: React.FC = () => {
   const { t } = useTranslation();
@@ -15,9 +14,7 @@ const Result: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [score, setScore] = useState(0);
   const [percentage, setPercentage] = useState(0);
-  const [email, setEmail] = useState('');
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
-  const [isSendingEmail, setIsSendingEmail] = useState(false);
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -49,10 +46,6 @@ const Result: React.FC = () => {
 
   }, [navigate, t]);
 
-  const handleTryAgain = () => {
-    navigate('/');
-  };
-
   const handleGenerateCertificate = async () => {
     if (!certificateRef.current) return null;
 
@@ -62,50 +55,12 @@ const Result: React.FC = () => {
         text: `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`,
         hashtags: ['GenderSensitivity', 'ISaksham']
       });
-      console.log("handleGenerateCertificate: PNG URL= ", certificate.pngUrl);
       return certificate;
     } catch (error) {
       console.error('Error generating certificate:', error);
       return null;
     }
   };
-  //   const handleGenerateCertificate = async () => {
-  //     if (!certificateRef.current) return null;
-
-  //     try {
-  //       const certificate = await generateCertificateImages(certificateRef.current, {
-  //         title: 'My Gender Sensitivity Certificate',
-  //         text: `I scored ${percentage.toFixed(1)}% on the Gender Sensitivity Quiz!`,
-  //         hashtags: ['GenderSensitivity', 'ISaksham']
-  //       });
-
-  //       console.log("Temporary Certificate PNG URL:", certificate.pngUrl);
-
-  //       // Convert data URL to Blob
-  //       const response = await fetch(certificate.pngUrl);
-  //       const blob = await response.blob();
-  //       const formData = new FormData();
-  //       formData.append('certificate', blob, `${userName}_certificate.png`);
-  //       formData.append('userName', userName);
-  //       formData.append('percentage', percentage.toFixed(1));
-
-  //       // Send to backend
-  //       const uploadResponse = await fetch('http://localhost:5000/quiz/upload-certificate', {
-  //         method: 'POST',
-  //         body: formData
-  //       });
-
-  //       const data = await uploadResponse.json(); // Get response from backend
-  //       console.log('Saved Certificate URL1:', data.fileUrl);
-  //       console.log("Saved Certificate URL:", data.filePath); // This is the permanent URL
-
-  //       return data.filePath; // Use this permanent URL
-  //     } catch (error) {
-  //       console.error('Error generating certificate:', error);
-  //       return null;
-  //     }
-  // };
-
 
   const handleDownloadCertificate = async () => {
     setIsGeneratingPDF(true);
@@ -207,7 +162,7 @@ const Result: React.FC = () => {
                   <Download size={20} className="mr-2" />
                   {isGeneratingPDF ? 'Generating...' : t('downloadCertificate')}
               </button>
-              <ShareButton onShare={handleGenerateCertificate} />
+              <ShareButton/>
             </div>
           </div>
         </div>
