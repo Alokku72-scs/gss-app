@@ -1,7 +1,7 @@
 {
   "siteTitle": "Gender Sensitive Society Quiz",
   "welcome": "Welcome to the Gender Sensitive Society Quiz",
-  "intro": "This quiz will help you assess how gender sensitive your soceity is.",
+  "intro": "This quiz will help you assess how gender sensitive your community is.",
   "startQuiz": "Start Quiz",
   "enterName": "Enter your name (for certificate)",
   "namePlaceholder": "Your Name",
@@ -12,7 +12,7 @@
   "previous": "Previous",
   "submit": "Submit",
   "yourScore": "Based on your responses your community's score is",
-  "totalVisits": "Total Visits",
+  "totalVisits": "people have already taken the quiz.",
   "shareTitle": "Share Your Certificate",
   "downloadCertificate": "Download Certificate",
   "emailCertificate": "Email Certificate",

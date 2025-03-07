@@ -12,9 +12,9 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-[#FDF1E5] min-h-screen">
+    <div className="bg-[#FDF1E5]">
       <Router>
-        <main className="container mx-auto p-4">
+        <main className="container mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/quiz" element={<Quiz />} />
