@@ -4,36 +4,24 @@ const db = require('../config/db');
 exports.saveQuizData = (req, res) => {
     const { selectedLanguage, answers } = req.body;
 
-    // Get latest visit count
-    db.query('SELECT count FROM quiz_responses ORDER BY id DESC LIMIT 1', (err, results) => {
+    const insertQuery = 'INSERT INTO quiz_responses (selectedLanguage, answers) VALUES (?, ?)';
+    db.query(insertQuery, [selectedLanguage, JSON.stringify(answers)], (err, _results) => {
         if (err) {
-            console.error("Database error:", err);
-            return res.status(500).json({ error: "Failed to fetch visit count" });
+            console.error("Insert error:", err);
+            return res.status(500).json({ error: "Failed to save quiz data" });
         }
-
-        let newCount = results.length > 0 && results[0].count !== null ? results[0].count + 1 : 1;
-
-        // Insert new quiz response with updated count
-        const insertQuery = 'INSERT INTO quiz_responses (selectedLanguage, answers, count) VALUES (?, ?, ?)';
-        db.query(insertQuery, [selectedLanguage, JSON.stringify(answers), newCount], (err, results) => {
-            if (err) {
-                console.error("Insert error:", err);
-                return res.status(500).json({ error: "Failed to save quiz data" });
-            }
-            res.status(201).json({ message: "Quiz data saved successfully!", newCount });
-        });
+        res.status(201).json({ message: "Quiz data saved successfully!" });
     });
 };
 
 // Get Total Visit Count from Latest Row
 exports.getTotalVisits = (req, res) => {
-    db.query('SELECT count FROM quiz_responses ORDER BY id DESC LIMIT 1', (err, results) => {
+    db.query('SELECT count(*) FROM quiz_responses', (err, results) => {
         if (err) {
             console.error("Fetch error:", err);
             return res.status(500).json({ error: "Failed to fetch total visits" });
         }
-
-        const totalVisits = results.length > 0 && results[0].count !== null ? results[0].count : 0;
+        const totalVisits = results[0]['count(*)'];
         res.json({ totalVisits });
     });
 };

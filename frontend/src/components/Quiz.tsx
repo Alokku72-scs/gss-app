@@ -52,7 +52,7 @@ const Quiz: React.FC = () => {
         selectedLanguage:selectedLanguage.language,
         answers: Object.keys(selectedOption).map(index => ({
           question: questions[Number(index)].text,
-          selectedOption: questions[Number(index)].options[selectedOption[Number(index)] - 1]
+          selectedOption: questions[Number(index)].options[selectedOption[Number(index)]]
         }))
       })
     });

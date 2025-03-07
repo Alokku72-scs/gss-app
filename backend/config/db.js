@@ -36,4 +36,13 @@ connection.connect((err) => {
   }
 });
 
+function pingdb() {
+  connection.query(`SELECT 1 + 1 AS solution`, function (err, _result) {
+    if (err) throw err;
+    console.log("Ping DB");
+  });
+}
+
+setInterval(pingdb, 40000);
+
 module.exports = connection;
