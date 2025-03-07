@@ -128,202 +128,6 @@ const Result: React.FC = () => {
     }
   };
 
-
-  // const handleSendEmail = async () => {
-  //   if (!email) return;
-
-  //   setIsSendingEmail(true);
-
-  //   try {
-  //     const certificate = await handleGenerateCertificate();
-  //     if (!certificate) throw new Error("Failed to generate certificate");
-
-  //     // Fetch the PDF as Blob and convert to Base64
-  //     const response = await fetch(certificate.pdfUrl);
-  //     const blob = await response.blob();
-  //     const reader = new FileReader();
-
-  //     reader.readAsDataURL(blob);
-  //     reader.onloadend = async () => {
-  //       const base64Data = reader.result?.toString().split(',')[1]; // Get only Base64 content
-
-  //       // Send Email with Base64 PDF
-  //       const params = {
-  //         to_email: email,
-  //         from_name: userName,
-  //         subject: "Your Certificate",
-  //         message: "Please find your certificate attached.",
-  //         attachment: base64Data, // Base64 encoded PDF
-  //         filename: `${userName}_certificate.pdf`, // File name
-  //       };
-
-  //       emailjs.send("service_foq71a3", "template_z2comz3", params,"Phy0lS6_2c9SSS-2T" )
-  //         .then(response => {
-  //           console.log("Email sent successfully!", response);
-  //           alert("Certificate sent successfully!");
-  //           setEmail('');
-  //         })
-  //         .catch(error => {
-  //           console.error("Failed to send email:", error);
-  //           alert("Failed to send the certificate.");
-  //         })
-  //         .finally(() => setIsSendingEmail(false));
-  //     };
-  //   } catch (error) {
-  //     console.error("Error sending email:", error);
-  //     setIsSendingEmail(false);
-  //   }
-  // };
-
-  // const handleSendEmail = async (recipientEmail: string) => {
-
-  //   if (!recipientEmail) {
-  //     alert("Please enter a valid email address.");
-  //     return;
-  //   }
-
-  //   setIsSendingEmail(true);
-
-  //   try {
-  //     // 1️⃣ Generate the certificate
-  //     const certificate = await handleGenerateCertificate();
-  //     if (!certificate) throw new Error("Certificate generation failed.");
-
-  //      // Convert PDF Blob to Base64
-  //      const base64PDF = await convertBlobToBase64(certificate.pdfBlob);
-
-  //     // 2️⃣ Set EmailJS Template Params
-  //     const templateParams = {
-  //       name: userName || "User",
-  //       email: recipientEmail,  // Dynamic recipient
-  //       subject: "Your Gender Sensitivity Certificate",
-  //       message: "Congratulations! Your certificate is ready. Download it below.",
-  //      // certificate_url: certificate.pdfUrl,  // Add this to template
-  //      attachment:base64PDF,
-  //     };
-
-  //     // 3️⃣ Send Email through EmailJS
-  //     const response = await emailjs.send(
-  //       "service_foq71a3",  // Your EmailJS Service ID
-  //       "template_z2comz3", // Your EmailJS Template ID
-  //       templateParams,
-  //       "Phy0lS6_2c9SSS-2T"   // Your EmailJS Public Key
-  //     );
-
-  //     if (response.status === 200) {
-  //       alert(`Email sent successfully to ${recipientEmail}!`);
-  //     } else {
-  //       alert("Failed to send email. Please try again.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error sending email:", error);
-  //     alert("An error occurred. Please try again.");
-  //   } finally {
-  //     setIsSendingEmail(false);
-  //   }
-  // };
-
-  // // Helper Function: Convert Blob to Base64
-  // const convertBlobToBase64 = (blob: Blob): Promise<string> => {
-  //   return new Promise((resolve, reject) => {
-  //    const reader = new FileReader();
-  //    reader.readAsDataURL(blob);
-  //    reader.onloadend = () => resolve(reader.result as string);
-  //    reader.onerror = (error) => reject(error);
-  //   });
-  // };
-  //   const handleSendEmail = async () => {
-  //     if (!email) return;
-
-  //     setIsSendingEmail(true);
-
-  //     const templateParams = {
-  //      to_email: email, // This will be passed to EmailJS
-  //     };
-
-  //   try {
-  //     const response = await emailjs.send(
-  //       "service_foq71a3",   // Replace with your EmailJS Service ID
-  //       "template_z2comz3",  // Replace with your EmailJS Template ID
-  //       templateParams,
-  //       "Phy0lS6_2c9SSS-2T"    // Replace with your EmailJS Public Key
-  //     );
-
-  //     if (response.status === 200) {
-  //       alert(`Certificate has been sent to ${email}`);
-  //       setEmail("");
-  //     } else {
-  //       alert("Failed to send email.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error sending email:", error);
-  //     alert("An error occurred.");
-  //   } finally {
-  //     setIsSendingEmail(false);
-  //   }
-  // };
-
-  // const handleSendEmail = async () => {
-  //   if (!email) return;
-
-  //   setIsSendingEmail(true);
-
-  //   try {
-  //     // In a real application, you would send the email through a backend service
-  //     await new Promise(resolve => setTimeout(resolve, 1500));
-  //     alert(`Certificate would be sent to ${email} in a real application.`);
-  //     setEmail('');
-  //   } catch (error) {
-  //     console.error('Error sending email:', error);
-  //   } finally {
-  //     setIsSendingEmail(false);
-  //   }
-  // };
-
-  const handleSendEmail = async (recipientEmail: string) => {
-    if (!recipientEmail) {
-      alert("Please enter a valid email address.");
-      return;
-    }
-
-    setIsSendingEmail(true);
-
-    try {
-      // 1️⃣ Generate the certificate
-      const certificate = await handleGenerateCertificate();
-      if (!certificate) throw new Error("Certificate generation failed.");
-
-      // 2️⃣ Set EmailJS Template Params
-      const templateParams = {
-        name: userName || "User",
-        email: recipientEmail, // Pass only the email string
-        subject: "Your Gender Sensitivity Certificate",
-        message: "Congratulations! Your certificate is ready. Download it below.",
-        certificate_url: certificate.pdfUrl, // Add this to the template
-      };
-
-      // 3️⃣ Send Email through EmailJS
-      const response = await emailjs.send(
-        "service_foq71a3",  // Your EmailJS Service ID
-        "template_z2comz3", // Your EmailJS Template ID
-        templateParams,
-        "Phy0lS6_2c9SSS-2T"   // Your EmailJS Public Key
-      );
-
-      if (response.status === 200) {
-        alert(`Email sent successfully to ${recipientEmail}!`);
-      } else {
-        alert("Failed to send email. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error sending email:", error);
-      alert("An error occurred. Please try again.");
-    } finally {
-      setIsSendingEmail(false);
-    }
-  };
-
-
   return (
     <div className="max-w-4xl mx-auto">
       {/* Result summary */}
@@ -392,43 +196,18 @@ const Result: React.FC = () => {
         </div>
 
         {/* Certificate actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div>
-            <h3 className="text-lg font-medium mb-3">{t('shareTitle')}</h3>
-            <div className="flex flex-wrap gap-2">
-              <ShareButton onShare={handleGenerateCertificate} />
-
+            <div className="flex flex-row flex-wrap gap-2">
               <button
-                onClick={handleDownloadCertificate}
-                disabled={isGeneratingPDF}
-                className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300 disabled:bg-green-400"
-              >
-                <Download size={20} className="mr-2" />
-                {isGeneratingPDF ? 'Generating...' : t('downloadCertificate')}
+                  onClick={handleDownloadCertificate}
+                  disabled={isGeneratingPDF}
+                  className="flex items-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition duration-300 disabled:bg-green-400"
+                >
+                  <Download size={20} className="mr-2" />
+                  {isGeneratingPDF ? 'Generating...' : t('downloadCertificate')}
               </button>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium mb-3">{t('emailCertificate')}</h3>
-            <div className="flex space-x-2">
-              <input
-                disabled
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t('emailPlaceholder')}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#EF7F1A]"
-              />
-
-              {/* <button
-                onClick={() => handleSendEmail(email)}
-                disabled={!email || isSendingEmail}
-                className="flex items-center px-4 py-2 bg-[#EF7F1A] text-white rounded-md hover:bg-[#D06C15] transition duration-300 disabled:bg-[#F8C093]"
-              >
-                <Mail size={20} className="mr-2" />
-                {isSendingEmail ? 'Sending...' : t('send')}
-              </button> */}
+              <ShareButton onShare={handleGenerateCertificate} />
             </div>
           </div>
         </div>

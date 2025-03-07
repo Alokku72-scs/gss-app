@@ -19,7 +19,7 @@ const ShareButton: React.FC<ShareButtonProps> = ({ onShare }) => {
         className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300"
       >
         <Share2 size={20} className="mr-2" />
-        Share Certificate
+        Share Quiz Link
       </button>
 
       {showPopup && (
