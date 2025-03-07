@@ -2,14 +2,9 @@ import React, { useState } from 'react';
 import { Share2 } from 'lucide-react';
 import SharePopup from './SharePopup';
 
-interface ShareButtonProps {
-  onShare: () => Promise<{
-    pngUrl: string;
-    pdfUrl: string;
-  }>;
-}
+interface ShareButtonProps {}
 
-const ShareButton: React.FC<ShareButtonProps> = ({ onShare }) => {
+const ShareButton: React.FC<ShareButtonProps> = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   return (
@@ -25,7 +20,6 @@ const ShareButton: React.FC<ShareButtonProps> = ({ onShare }) => {
       {showPopup && (
         <SharePopup
           onClose={() => setShowPopup(false)}
-          onShare={onShare}
         />
       )}
     </>
