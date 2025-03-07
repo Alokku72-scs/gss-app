@@ -23,119 +23,129 @@
   "genderAware": "Consciente del Gender",
   "disclaimer": "Las traducciones de idiomas pueden no ser completamente correctas ya que es un cuestionario generado por IA. I-Saksham Education and Learning Foundation está haciendo un esfuerzo para promover una sociedad igualitaria en términos de Gender",
   "tryAgain": "Intentar de Nuevo",
-  "congratulations": "Felicitaciones",
+  "congratulations": "Gracias",
   "certificateFrom": "Certificado de participación en el Concurso de Sociedad Sensible al Género con motivo del Día Internacional de la Mujer 2025.",
-  "voice":"Voz y Opción para Cada Mujer",
+  "voice": "Voz y Opción para Cada Mujer",
+  "hasCompletedTheGenderSensitivityQuiz": "ha completado el cuestionario de la Sociedad de Sensibilidad de Género.",
+  "withAScoreOf": "con una puntuación de",
+  "youAre": "Según su puntuación, su comunidad es",
+  "genderBiased": "sesgado por género",
+  "genderQuizIntro": "bueno",
+  "VOICE_CHOICE_LEADER": "Líder de Voz y Elección. ¡Representas a una comunidad increíble!",
+  "VOICE_CHOICE_CHAMPION": "Campeón de Voz y Elección. ¡Estás en el camino correcto!",
+  "VOICE_CHOICE_AWARE": "Conocedor de Voz y Elección. ¡Hagámoslo mejor!",
+  "VOICE_CHOICE_MINDSET_SHIFT": "sesgado por género. ¡Tu comunidad necesita un cambio de mentalidad!!",
+  "thisIsToCertifyThat": "Por la presente se certifica que",
   "questions": [
-      {
-        "text": "En las reuniones de panchayat de su aldea, si una sarpanch presenta planes de conservación de agua y algunos miembros masculinos la interrumpen repetidamente, ¿cuál es la respuesta general observada en su sociedad?",
-        "options": [
-          "La sarpanch debería hablar más fuerte para superar las interrupciones.",
-          "El moderador de la reunión debería asegurar un tiempo de palabra igual para todos los miembros, independientemente del género.",
-          "La sarpanch debería esperar a que los hombres terminen de hablar antes de continuar.",
-          "Otras mujeres también deberían comenzar a interrumpir para contrarrestar la situación."
-        ],
-        "correctAnswers": [1],
-        "explanation": "Asegurar un tiempo de palabra igual y respeto para cada miembro se considera el enfoque más equilibrado e inclusivo en la sociedad."
-      },
-      {
-        "text": "Cuando una escuela en su área organiza un día deportivo, ¿cuál es el enfoque general observado en su sociedad con respecto a la estructuración de las actividades?",
-        "options": [
-          "Las actividades deportivas se separan por género para honrar los roles tradicionales.",
-          "Se permite a los estudiantes participar en cualquier deporte que elijan, independientemente del género.",
-          "Se organiza una mezcla de actividades específicas de género y mixtas para equilibrar la tradición con la igualdad.",
-          "Solo se incluyen los deportes que tradicionalmente son aceptados para ambos géneros."
-        ],
-        "correctAnswers": [1],
-        "explanation": "Permitir que todos los estudiantes participen en cualquier deporte que elijan, independientemente del género, es el enfoque más inclusivo y equilibrado."
-      },
-      {
-        "text": "En los hogares de su comunidad, cuando una hija aspira a seguir la educación superior en una ciudad pero la familia duda, ¿cuál es el enfoque general observado en su sociedad?",
-        "options": [
-          "La familia prioriza su matrimonio sobre la educación, considerándolo más seguro.",
-          "La familia permite su educación, pero solo en los campos considerados adecuados para las mujeres.",
-          "La familia apoya sus aspiraciones educativas mientras aborda constructivamente las preocupaciones de seguridad.",
-          "La familia recomienda el aprendizaje a distancia para que pueda permanecer en casa."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Apoyar las aspiraciones educativas mientras se abordan constructivamente las preocupaciones de seguridad se considera el enfoque más equilibrado y progresivo."
-      },
-      {
-        "text": "En su sociedad, ¿cómo se dividen típicamente las responsabilidades durante la hora de la comida en los hogares?",
-        "options": [
-          "Las mujeres son las principales responsables tanto de cocinar como de servir durante las horas de comida.",
-          "Las mujeres lideran la cocina mientras que el servicio se comparte entre todos los miembros del hogar.",
-          "Cocinar y servir son responsabilidades compartidas, con tareas asignadas según la disponibilidad e interés.",
-          "Los hombres cocinan principalmente, mientras que el servicio es realizado por cualquier miembro de la familia disponible."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Un modelo de responsabilidad compartida, donde las tareas se asignan según la disponibilidad e interés, se considera el enfoque más equilibrado."
-      },
-      {
-        "text": "En su sociedad, ¿cómo se percibe generalmente la decisión de un hombre de tomar la licencia de paternidad después del nacimiento de su hijo?",
-        "options": [
-          "Se considera innecesario ya que el cuidado de los niños se ve principalmente como responsabilidad de la mujer.",
-          "Se considera admirable pero poco práctico en un entorno donde se espera que los hombres trabajen.",
-          "Se apoya, reconociendo que los padres juegan un papel importante en el cuidado infantil temprano.",
-          "Es aceptable solo si no hay familiares femeninas disponibles para ayudar."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Apoyar la licencia de paternidad reconoce el importante papel de los padres en el cuidado infantil y desafía los roles de género tradicionales."
-      },
-      {
-        "text": "¿En la mayoría de los hogares de su sociedad, cómo participan típicamente las mujeres en la toma de decisiones financieras?",
-        "options": [
-          "Los hombres suelen tomar todas las decisiones financieras clave con poca o ninguna aportación de las mujeres.",
-          "Las mujeres tienen alguna aportación, pero las decisiones finales son tomadas predominantemente por los hombres.",
-          "Las decisiones financieras se toman colectivamente, con las mujeres teniendo una voz igualitaria junto con los hombres.",
-          "Los asuntos financieros se dividen por tipo: los hombres gestionan las inversiones principales, mientras que las mujeres manejan los gastos diarios."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Un enfoque colectivo que valora la participación igualitaria asegura que tanto hombres como mujeres contribuyan a las decisiones financieras del hogar."
-      },
-      {
-        "text": "En su sociedad, ¿cómo se recibe generalmente el interés de una adolescente en aprender a montar en motocicleta?",
-        "options": [
-          "Su interés es desanimado basándose en que las motocicletas no se consideran apropiadas para las chicas.",
-          "Se le permite aprender, pero generalmente se le restringe a montar solo dentro del pueblo.",
-          "Su interés es apoyado, con la provisión de entrenamiento adecuado y medidas de seguridad.",
-          "Se le aconseja optar por aprender a montar en scooter en su lugar, lo cual se ve como más adecuado para las chicas."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Apoyar su interés con entrenamiento adecuado y medidas de seguridad respeta su autonomía mientras se abordan las preocupaciones de seguridad."
-      },
-      {
-        "text": "En su sociedad, ¿cómo se lleva a cabo generalmente la educación sobre salud reproductiva durante los campamentos de salud comunitarios?",
-        "options": [
-          "Sesiones separadas para hombres y mujeres con contenido específico para cada género.",
-          "Principalmente enfocado en las mujeres, ya que ellas llevan la mayor parte de las responsabilidades reproductivas.",
-          "Educación integral para todos los géneros, incorporando sesiones tanto conjuntas como separadas según sea necesario.",
-          "Información básica proporcionada a todos, con sesiones detalladas ofrecidas solo a individuos casados."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Un enfoque integral que incluye sesiones tanto conjuntas como separadas según sea necesario asegura que todos estén bien informados sobre la salud reproductiva."
-      },
-      {
-        "text": "En su sociedad, ¿cómo se apoya generalmente la iniciativa de una viuda para iniciar un pequeño negocio?",
-        "options": [
-          "Se le desanima a iniciar un negocio debido a percepciones de capacidad limitada.",
-          "Se le aconseja enfocarse en campos tradicionales, como la artesanía.",
-          "Recibe el mismo nivel de apoyo y recursos que cualquier otro miembro de la comunidad.",
-          "Se le dan ventajas especiales debido a su posición vulnerable."
-        ],
-        "correctAnswers": [2],
-        "explanation": "Proporcionar apoyo igualitario sin discriminación la empodera y reconoce su potencial."
-      },
-      {
-        "text": "En muchas campañas electorales rurales, los carteles de una candidata a menudo presentan prominentemente a su esposo o hijo, implicando que el poder de decisión recae en gran medida en los hombres. ¿Cuál es la respuesta general a tales estrategias de campaña en su sociedad?",
-        "options": [
-          "Critican esta estrategia, enfatizando el liderazgo independiente de la candidata.",
-          "Lo ven como una táctica para asegurar el apoyo tradicional en un entorno rural, y lo aceptan hasta cierto punto.",
-          "Participan en discusiones comunitarias para explorar ambas perspectivas sobre los roles de género.",
-          "Lo aceptan como un reflejo de las normas sociales actuales, mientras esperan un cambio gradual con el tiempo."
-        ],
-        "correctAnswers": [0],
-        "explanation": "Enfatizar el liderazgo independiente de la candidata desafía las normas convencionales y apoya una visión más progresista de la toma de decisiones."
-      }
-    ]
+    {
+      "text": "¿En su sociedad, cómo se dividen típicamente las responsabilidades durante las comidas en los hogares?",
+      "options": [
+        "Las mujeres son las principales responsables de cocinar y servir durante las comidas.",
+        "Las mujeres lideran la cocina mientras que el servicio se comparte entre todos los miembros del hogar.",
+        "Cocinar y servir son responsabilidades compartidas, con tareas asignadas según la disponibilidad y el interés.",
+        "Los hombres cocinan principalmente, mientras que el servicio lo realiza cualquier miembro de la familia disponible."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Un modelo de responsabilidad compartida, donde las tareas se asignan según la disponibilidad y el interés, se considera el enfoque más equilibrado."
+    },
+    {
+      "text": "¿En la mayoría de los hogares de su sociedad, cómo suelen participar las mujeres en la toma de decisiones financieras?",
+      "options": [
+        "Los hombres suelen tomar todas las decisiones financieras clave con poca o ninguna aportación de las mujeres.",
+        "Las mujeres tienen alguna aportación, pero las decisiones finales las toman predominantemente los hombres.",
+        "Las decisiones financieras se toman colectivamente, con las mujeres teniendo la misma voz que los hombres.",
+        "Los asuntos financieros se dividen por categoría. Los hombres gestionan las grandes inversiones mientras que las mujeres manejan los gastos diarios."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Un enfoque colectivo que valora la participación igualitaria asegura que tanto hombres como mujeres contribuyan a las decisiones financieras del hogar."
+    },
+    {
+      "text": "¿En su sociedad, cómo se percibe generalmente la decisión de un hombre de tomar la licencia de paternidad después del nacimiento de su hijo?",
+      "options": [
+        "Se considera innecesario ya que el cuidado de los niños se considera principalmente responsabilidad de la mujer.",
+        "Se considera admirable pero poco práctico en un entorno donde se espera que los hombres trabajen.",
+        "Se apoya, reconociendo que los padres juegan un papel importante en el cuidado temprano de los niños.",
+        "Es aceptable solo si no hay familiares mujeres disponibles para ayudar."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Apoyar la licencia de paternidad reconoce el importante papel de los padres en el cuidado de los niños y desafía los roles de género tradicionales."
+    },
+    {
+      "text": "En las reuniones de panchayat de su aldea, si una sarpanch presenta planes de conservación de agua y algunos miembros masculinos la interrumpen repetidamente, ¿cuál es la respuesta general observada en su sociedad?",
+      "options": [
+        "La sarpanch comienza a hablar más fuerte para superar las interrupciones.",
+        "El moderador de la reunión asegura el mismo tiempo de palabra para todos los miembros, independientemente del género.",
+        "La sarpanch se sienta y deja que los miembros masculinos sigan adelante.",
+        "Otras mujeres comienzan a interrumpir para contrarrestar la situación."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Asegurar el mismo tiempo de palabra y respeto para cada miembro se considera el enfoque más equilibrado e inclusivo en la sociedad."
+    },
+    {
+      "text": "Cuando una escuela en su área organiza un día deportivo, ¿cuál es el enfoque general observado en su sociedad con respecto a la estructuración de las actividades?",
+      "options": [
+        "Las actividades deportivas se separan por género para honrar los roles tradicionales.",
+        "Se permite a los estudiantes participar en cualquier deporte que elijan, independientemente del género.",
+        "Se organiza una mezcla de actividades específicas de género y mixtas para equilibrar la tradición con la igualdad.",
+        "Solo se incluyen los deportes que son tradicionalmente aceptados para ambos géneros."
+      ],
+      "correctAnswer": 1,
+      "explanation": "Permitir que todos los estudiantes participen en cualquier deporte que elijan, independientemente del género, es el enfoque más inclusivo y equilibrado."
+    },
+    {
+      "text": "En los hogares de su comunidad, cuando una niña aspira a seguir una educación superior en una ciudad pero la familia duda, ¿cuál es el enfoque general observado?",
+      "options": [
+        "La familia prioriza su matrimonio sobre la educación, considerándolo más seguro.",
+        "La familia permite su educación pero solo en campos considerados adecuados para mujeres.",
+        "La familia apoya sus aspiraciones educativas mientras aborda constructivamente las preocupaciones de seguridad.",
+        "La familia recomienda el aprendizaje a distancia para que pueda permanecer en casa."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Apoyar las aspiraciones educativas mientras se abordan constructivamente las preocupaciones de seguridad se considera el enfoque más equilibrado y progresivo."
+    },
+    {
+      "text": "¿En su sociedad, cómo se recibe generalmente el interés de una adolescente en aprender a andar en motocicleta?",
+      "options": [
+        "Su interés es desalentado sobre la base de que las motocicletas no se consideran apropiadas para las niñas.",
+        "Se le permite aprender, pero generalmente se restringe a montar solo dentro del pueblo.",
+        "Su interés es apoyado, con la formación adecuada y las medidas de seguridad proporcionadas.",
+        "Se le aconseja optar por aprender a andar en scooter en su lugar, que se considera más adecuado para las niñas."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Apoyar su interés con la formación adecuada y las medidas de seguridad respeta su autonomía mientras aborda las preocupaciones de seguridad."
+    },
+    {
+      "text": "¿En su sociedad, cómo se lleva a cabo generalmente la educación sobre salud reproductiva durante los campamentos de salud comunitarios?",
+      "options": [
+        "Sesiones separadas para hombres y mujeres con contenido específico para cada género.",
+        "Principalmente centrado en las mujeres, ya que ellas soportan la mayoría de las responsabilidades reproductivas.",
+        "Educación integral para todos los géneros, incorporando sesiones conjuntas y separadas según sea necesario.",
+        "Información básica proporcionada a todos, con sesiones detalladas ofrecidas solo a personas casadas."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Un enfoque integral que incluye sesiones conjuntas y separadas según sea necesario asegura que todos estén bien informados sobre salud reproductiva."
+    },
+    {
+      "text": "¿En su sociedad, cómo se apoya generalmente la iniciativa de una viuda para iniciar un pequeño negocio?",
+      "options": [
+        "Se le disuade de iniciar un negocio debido a las percepciones de capacidad limitada.",
+        "Se le aconseja centrarse en campos tradicionales, como la artesanía.",
+        "Recibe el mismo nivel de apoyo y recursos que cualquier otro miembro de la comunidad.",
+        "Se le dan ventajas especiales debido a su posición vulnerable."
+      ],
+      "correctAnswer": 2,
+      "explanation": "Proporcionar apoyo igualitario sin discriminación la empodera y reconoce su potencial."
+    },
+    {
+      "text": "En muchas campañas electorales rurales, los carteles de una candidata a menudo muestran prominentemente a su esposo o hijo, lo que implica que el poder de decisión recae en gran medida en los hombres. ¿Cuál es la respuesta general a tales estrategias de campaña en su sociedad?",
+      "options": [
+        "Critican esta estrategia, enfatizando el liderazgo independiente de la candidata.",
+        "Lo ven como una táctica para asegurar el apoyo tradicional en un entorno rural, y lo aceptan hasta cierto punto.",
+        "Participan en discusiones comunitarias para explorar ambas perspectivas sobre los roles de género.",
+        "Lo aceptan como un reflejo de las normas sociales actuales, mientras esperan un cambio gradual con el tiempo."
+      ],
+      "correctAnswer": 0,
+      "explanation": "Enfatizar el liderazgo independiente de la candidata desafía las normas convencionales y apoya una visión más progresiva de la toma de decisiones."
+    }
+  ]
 }
