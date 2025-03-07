@@ -15,17 +15,15 @@ const Result: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [score, setScore] = useState(0);
   const [percentage, setPercentage] = useState(0);
-  const [category, setCategory] = useState('');
   const [email, setEmail] = useState('');
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [isSendingEmail, setIsSendingEmail] = useState(false);
-  const [message1, setMessage1] = useState("");
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     const storedName = localStorage.getItem('userName');
     const storedScore = localStorage.getItem('quizScore');
     const storedPercentage = localStorage.getItem('quizPercentage');
-    // console.log("storedScore", storedScore);
-    // console.log("Score",score);
 
     if (!storedName || !storedScore || !storedPercentage) {
       navigate('/');
@@ -34,13 +32,13 @@ const Result: React.FC = () => {
     const numericPercentage = parseInt(storedPercentage, 10);
 
     if (numericPercentage > 90) {
-      setMessage1(t('VOICE_CHOICE_LEADER'));
+      setMessage(t('VOICE_CHOICE_LEADER'));
     } else if (numericPercentage > 70 && numericPercentage <= 90) {
-      setMessage1(t('VOICE_CHOICE_CHAMPION'));
+      setMessage(t('VOICE_CHOICE_CHAMPION'));
     } else if (score > 50 && score <= 70) {
-      setMessage1(t('VOICE_CHOICE_AWARE'));
+      setMessage(t('VOICE_CHOICE_AWARE'));
     } else {
-      setMessage1(t('VOICE_CHOICE_MINDSET_SHIFT'));
+      setMessage(t('VOICE_CHOICE_MINDSET_SHIFT'));
     }
 
     setUserName(storedName);
@@ -49,13 +47,6 @@ const Result: React.FC = () => {
     const percentValue = parseFloat(storedPercentage);
     setPercentage(percentValue);
 
-    if (percentValue >= 80) {
-      setCategory(t('genderChampion'));
-    } else if (percentValue >= 60) {
-      setCategory(t('genderSensitive'));
-    } else {
-      setCategory(t('genderAware'));
-    }
   }, [navigate, t]);
 
   const handleTryAgain = () => {
@@ -336,47 +327,28 @@ const Result: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto">
       {/* Result summary */}
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-        <div className='flex justify-center'>
-          <p className="justify-center text-2xl font-bold mb-2 ">{t('congratulations')}, {userName}!🎊
-            <span className='text-3xl p-3'>{t('yourScore')}:
-            </span>{percentage.toFixed(1)}%
-          </p>
+      <div className="bg-white rounded-lg shadow-lg m-2">
+        <div className='flex flex-col items-center justify-center m-4'>
+          <p className="text-center text-3xl font-bold m-2">🎊{t('congratulations')}, {userName}!🎊</p>
+          <p className='text-center text-2xl m-2'>{t('yourScore')} {score}</p>
         </div>
 
-        <div className={`text-center p-2 rounded-lg mb-2 ${percentage >= 80
-          ? 'bg-green-100 text-green-800'
-          : percentage >= 60
-            ? 'bg-blue-100 text-blue-800'
-            : 'bg-yellow-100 text-yellow-800'
-          }`}>
-
+        <div className="text-center p-2 rounded-lg p-2 bg-[#EF7F1A]">
           <p className="text-xl">
-            {t('youAre')} <span className="font-bold">{category}</span>
+            {t('youAre')}
           </p>
-          <p className='text-2xl font-bold mb-4 text-[#EF7F1A]'>
-            {message1 ? message1 : "Default text"}
+          <p className='text-2xl font-bold text-[#222]'>
+            {message ? message : "Default text"}
           </p>
         </div>
-
-        {/* <div className="flex justify-center">
-          <button
-            onClick={handleTryAgain}
-            className="flex items-center px-6 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition duration-300"
-          >
-            <RefreshCw size={20} className="mr-2" />
-            {t('tryAgain')}
-          </button>
-        </div> */}
       </div>
 
       {/* Certificate */}
-      <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-        {/* <h2 className="text-2xl font-bold text-center mb-6">{t('certificateFrom')}</h2> */}
+      <div className="bg-white rounded-lg shadow-lg p-8 m-8">
 
         <div
           ref={certificateRef}
-          className="w-[800px] h-[565px] border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-4"
+          className="w-4xl h-3xl border-8 border-[#EF7F1A] rounded-lg p-8 bg-white mb-4"
           style={{
             backgroundImage: 'linear-gradient(45deg, rgba(239, 127, 26, 0.05) 25%, transparent 25%, transparent 50%, rgba(239, 127, 26, 0.05) 50%, rgba(239, 127, 26, 0.05) 75%, transparent 75%, transparent)',
             backgroundSize: '40px 40px'
@@ -389,24 +361,18 @@ const Result: React.FC = () => {
               <img src={logo} alt="I-Saksham Logo" className="h-16 object-contain" />
             </div>
 
-            {/* Category (Title) */}
-            <h1 className="text-4xl font-extrabold text-[#EF7F1A] mb-4 uppercase tracking-wide">
-              {category}
-            </h1>
-
             {/* Certification Text */}
             <p className="text-xl text-gray-700 mb-2">{t('thisIsToCertifyThat')}</p>
 
-            {/* User Name */}
-            <p className="text-4xl font-extrabold text-[#EF7F1A] mb-3">{userName}</p>
-
-            {/* Horizontal Line */}
-            <div className="flex justify-center mb-4">
-              <div className="w-40 h-1 bg-[#EF7F1A] rounded-full"></div>
-            </div>
+            <p className='m-8'>
+              <p className="text-4xl font-extrabold text-[#EF7F1A] my-4">{userName}</p>
+              <div className="flex justify-center">
+                <div className="w-60 h-1 bg-[#EF7F1A] rounded-full"></div>
+              </div>
+            </p>
 
             {/* Certificate Description */}
-            <p className="text-xl font-medium text-gray-800 mb-6 tracking-wide leading-relaxed" style={{ wordSpacing: "3px" }}>
+            <p className="text-xl font-medium text-gray-800 m-6 leading-relaxed">
               {t('certificateFrom')}
             </p>
 

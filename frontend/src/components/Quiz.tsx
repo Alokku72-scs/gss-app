@@ -40,8 +40,7 @@ const Quiz: React.FC = () => {
 
   const handleSubmit = async (totalScore: number) => {
 
-    const maxPossibleScore = questions.length * 10;
-    const percentage = (totalScore / maxPossibleScore) * 100;
+    const percentage = totalScore
 
     localStorage.setItem('quizScore', totalScore.toString());
     localStorage.setItem('quizPercentage', percentage.toString());
@@ -82,7 +81,7 @@ const Quiz: React.FC = () => {
 
   return (
       <div className="flex items-center justify-center min-h-screen">
-      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 mt-8">
+      <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
             <div className="mb-6">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl font-bold">
