@@ -49,7 +49,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchTotalVisits = async () => {
       try {
-        const response = await fetch("https://gss.i-saksham.org/quiz/total-visits");
+        const response = await fetch("https://localhost:5000/quiz/total-visits");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
